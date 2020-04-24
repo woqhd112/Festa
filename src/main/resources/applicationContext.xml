@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.gjt.mm.mysql.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/festa?useUnicode=true&amp;characterEncoding=utf-8" />
+		<property name="username" value="scott" />
+		<property name="password" value="tiger" />
+		<!-- <property name="password" value="a2381016!" /> -->
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/mybatis-config.xml"/>
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- Gmail -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="ekema572@gmail.com" />
+		<property name="password" value="clfebsqbzzgvkgfh" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 구글 소셜로그인 -->
+	
+	<!-- Google 소셜 로그인 연결 설정 -->
+    <bean id="googleOAuth2Template"
+        class="org.springframework.social.google.connect.GoogleOAuth2Template">
+        <constructor-arg
+            value="523392531637-h589a81n8ni7bgln4dc5ot68904e6p4g.apps.googleusercontent.com" />
+        <constructor-arg value="YrBLBIB2SPRqfy3Ui4f8qNdg" />
+    </bean>
+ 
+ 
+    <bean id="googleOAuth2Parameters"
+        class="org.springframework.social.oauth2.OAuth2Parameters">
+        <property name="scope"
+            value="profile"></property>
+        <property name="redirectUri"
+            value="http://localhost:8080/member/googleCallback" />
+    </bean>
+ 
+    <bean id="authInfo" class="com.fin.festa.model.entity.SocialGoogle">
+        <constructor-arg
+            value="523392531637-h589a81n8ni7bgln4dc5ot68904e6p4g.apps.googleusercontent.com" />
+        <constructor-arg value="YrBLBIB2SPRqfy3Ui4f8qNdg" />
+ 
+    </bean>
+	
+	<bean id="webSocketHandler" class="com.fin.festa.util.EchoHandler" ></bean>
+	<websocket:handlers>
+		<websocket:mapping handler="webSocketHandler" path="/chat/echo"/>
+		<websocket:handshake-interceptors>
+			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
+		</websocket:handshake-interceptors>
+	</websocket:handlers>
+	
+	<context:component-scan base-package="com.fin.festa" />
+	<mybatis-spring:scan base-package="com.fin.festa.model" />
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>

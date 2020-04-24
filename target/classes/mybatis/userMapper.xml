@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+   <!-- 내피드목록 조인 시에 참조되는 데이터 -->
+   <resultMap type="MyPostVo" id="mypost">
+      <result column="mpnum" property="mpnum"/>
+      <result column="mpauthor" property="mpauthor"/>
+      <result column="mpphoto" property="mpphoto"/>
+      <result column="mpcontent" property="mpcontent"/>
+      <result column="mpdate" property="mpdate"/>
+      <result column="mpgood" property="mpgood"/>
+      <result column="pronum12" property="pronum"/>
+      <result column="mptotal" property="mptotal"/>
+      <result column="httitle1" property="httitle1"/>
+      <result column="httitle2" property="httitle2"/>
+      <result column="httitle3" property="httitle3"/>
+      <association property="profile" resultMap="profile1"/>
+   </resultMap>
+   <!-- 내캠핑목록 조인 시에 참조되는 데이터 -->
+   <resultMap type="CampVo" id="camp">
+      <result column="canum" property="canum"/>
+      <result column="caname" property="caname"/>
+      <result column="cagood" property="cagood"/>
+      <result column="mvnum1" property="mvnum"/>
+      <result column="caphoto" property="caphoto"/>
+      <result column="caaddr" property="caaddr"/>
+      <result column="caintro" property="caintro"/>
+      <result column="caguide1" property="caguide1"/>
+      <result column="caguide2" property="caguide2"/>
+      <result column="caguide3" property="caguide3"/>
+      <result column="caguide4" property="caguide4"/>
+      <result column="caguide5" property="caguide5"/>
+      <result column="caguide6" property="caguide6"/>
+      <result column="caguide7" property="caguide7"/>
+      <result column="cadate" property="cadate"/>
+      <result column="cadateup" property="cadateup"/>
+      <result column="caavg" property="caavg"/>
+      <result column="caintroone" property="caintroone"/>
+      <result column="caaddrsel" property="caaddrsel"/>
+      <result column="caaddrsuv" property="caaddrsuv"/>
+      <result column="httitle1" property="httitle1"/>
+      <result column="httitle2" property="httitle2"/>
+      <result column="httitle3" property="httitle3"/>
+      <association property="profile" resultMap="profile1"/>
+   </resultMap>
+   
+   <!-- 내피드 댓글출력 조인시에 참조되는 데이터 -->
+   <resultMap type="MyCommentVo" id="cmmt">
+      <result column="mcnum" property="mcnum"/>
+      <result column="mccontent" property="mccontent"/>
+      <result column="mcauthor" property="mcauthor"/>
+      <result column="mcdate" property="mcdate"/>
+      <result column="mpnum1" property="mpnum"/>
+      <result column="pronum13" property="pronum"/>
+      <result column="pronum_sync" property="pronum_sync"/>
+      <association property="profile" resultMap="profile1"/>
+   </resultMap>
+   <resultMap type="ProfileVo" id="profile1">
+      <result column="proid" property="proid"/>
+      <result column="prophoto" property="prophoto"/>
+   </resultMap>
+   
+   <!-- 내팔로워목록 조인 시에 참조되는 데이터 -->
+   <resultMap type="MyFollowerVo" id="follower">
+      <result column="mfrnum" property="mfrnum"/>
+      <association property="profile" resultMap="profile"/>
+   </resultMap>
+   <!-- 내팔로잉목록 조인 시에 참조되는 데이터 -->
+   <resultMap type="MyFollowingVo" id="following">
+      <result column="mfgnum" property="mfgnum"/>
+      <association property="profile" resultMap="profile"/>
+   </resultMap>
+   <resultMap type="ProfileVo" id="profile">
+      <result column="pronum" property="pronum"/>
+      <result column="proname" property="proname"/>
+      <result column="proid" property="proid"/>
+      <result column="propw" property="propw"/>
+      <result column="proaddr" property="proaddr"/>
+      <result column="prointro" property="prointro"/>
+      <result column="projob" property="projob"/>
+      <result column="projender" property="projender"/>
+      <result column="prophoto" property="prophoto"/>
+      <result column="proidnum" property="proidnum"/>
+      <result column="prodate" property="prodate"/>
+   </resultMap>
+      
+   <!-- 그룹 -->
+   <resultMap type="GroupVo" id="group">
+      <result column="grnum" property="grnum"/>
+      <result column="pronum1" property="pronum"/>
+      <result column="grname" property="grname"/>
+      <result column="grphoto" property="grphoto"/>
+      <result column="grtotal" property="grtotal"/>
+      <result column="grintro" property="grintro"/>
+      <result column="graddr" property="graddr"/>
+      <result column="grdate" property="grdate"/>
+      <result column="grtotal" property="grtotal"/>
+      <result column="grventure" property="grventure"/>
+      <result column="httitle1" property="httitle1"/>
+      <result column="httitle2" property="httitle2"/>
+      <result column="httitle3" property="httitle3"/>
+   </resultMap>
+  
+   <!-- 내 좋아요목록 -->
+   <resultMap type="MyGoodVo" id="good">
+      <result column="pronum6" property="pronum"/>
+      <result column="canum3" property="canum"/>
+      <result column="gpnum3" property="gpnum"/>
+      <result column="mpnum2" property="mpnum"/>
+   </resultMap>
+   
+   <!-- 추가 사항 -->
+
+   <!-- 유저피드 댓글 더보기출력 -->
+   <select id="FeedDetailCmmt" parameterType="MyPostVo" resultMap="cmmt">
+      select * from (select @rownum:=@rownum+1 as prorn,a.*,b.prophoto from mycomment
+       a inner join profile b on a.pronum13=b.pronum,(select @rownum:=0) r where mpnum1=#{mpnum} order by mcdate desc)
+        c where prorn<![CDATA[ >= ]]>#{pageSearch.startnum} and prorn<![CDATA[ <= ]]>#{pageSearch.endnum}+1 
+   </select>
+   
+   <!-- 추가 사항 end -->
+   
+   <!-- 마이페이지 화면출력 start -->
+
+   <!-- 내계정 비활성화,정치,추방 체크 -->
+   <select id="inactiveAndStopAndKick" parameterType="ProfileVo" resultType="MyAdminVo">
+      select * from myadmin where pronum7=#{pronum}
+   </select>
+
+	<!-- 내피드접속시 내정보 출력 -->
+	<select id="myInfo" parameterType="ProfileVo" resultType="ProfileVo">
+	   select * from profile where pronum=#{pronum}
+	</select>
+   
+	<!-- 내피드 리스트출력 등록순 정렬-->
+	<select id="myFeedSelectAll" parameterType="ProfileVo" resultMap="mypost">
+	   select d.*,(select count(*) from mycomment where mpnum1=d.mpnum) as mptotal from 
+	   (select a.*,c.prophoto from mypost a inner join profile c
+	    on a.pronum12=c.pronum where pronum12=#{pronum} order by mpdate desc) d
+	</select>
+   
+	<!-- 내피드 댓글리스트 출력 -->
+	<select id="myFeedCmmtSelectAll" parameterType="ProfileVo" resultMap="cmmt">
+		select a.*,b.prophoto from mycomment a inner join profile b on a.pronum13=b.pronum where pronum_sync=#{pronum} order by mcdate desc
+	</select>
+
+   
+   <!-- 내피드 갯수출력 -->
+   <select id="myFeedCount" parameterType="ProfileVo" resultType="int">
+      select count(*) from mypost where pronum12=#{pronum}
+   </select>
+   
+   <!-- 내팔로워 갯수출력 -->
+   <select id="myFollowerCount" parameterType="ProfileVo" resultType="int">
+      select count(*) from myfollower where pronum_sync=#{pronum}
+   </select>
+   
+   <!-- 내팔로잉 갯수출력 -->
+   <select id="myFollowingCount" parameterType="ProfileVo" resultType="int">
+      select count(*) from myfollowing where pronum11=#{pronum}
+   </select>
+      
+   <!-- 내 팔로워목록 출력 -->
+   <select id="myFollowerList" parameterType="ProfileVo" resultMap="follower">
+      select a.mfrnum,b.* from myfollower a inner join profile b on a.pronum10=b.pronum where pronum_sync=#{pronum}
+   </select>
+   
+   <!-- 내 팔로잉목록 출력 -->
+   <select id="myFollowingList" parameterType="ProfileVo" resultMap="following">
+      select a.mfgnum,b.* from myfollowing a inner join profile b on a.pronum_sync=b.pronum where pronum11=#{pronum}
+   </select>
+   
+   <!-- 마이페이지 화면출력 end -->
+   <!-- 피드,댓글 등록,수정,삭제 start -->
+   
+   <!-- 내피드 등록 -->
+   <insert id="myFeedInsert" parameterType="MyPostVo">
+      insert into mypost (pronum12,mpauthor,mpcontent,mpdate,mpgood,mpphoto,httitle1,httitle2,httitle3) values (#{pronum},#{mpauthor},#{mpcontent},now(),0,#{mpphoto},#{httitle1},#{httitle2},#{httitle3})
+   </insert>
+   
+   <!-- 내 피드 수정(팝업에서 내용 보여주기) -->
+   <select id="myFeedDetail" parameterType="MyPostVo" resultMap="mypost" >
+      select a.*,b.prophoto from mypost as a inner join profile as b on a.pronum12=b.pronum where a.mpnum = #{mpnum}
+   </select>
+   
+   <!-- 내피드 수정 -->
+   <update id="myFeedUpdate" parameterType="MyPostVo">
+      update mypost set mpcontent=#{mpcontent},mpphoto=#{mpphoto},httitle1=#{httitle1},httitle2=#{httitle2},httitle3=#{httitle3} where mpnum=#{mpnum}
+   </update>
+
+   <!-- 내피드 삭제 -->
+   <delete id="myFeedDelete" parameterType="MyPostVo">
+      delete from mypost where mpnum=#{mpnum}
+   </delete>
+   
+   <!-- 내피드댓글 등록 -->
+   <insert id="myFeedCmmtInsert" parameterType="MyCommentVo">
+      insert into mycomment (mccontent,mcauthor,mcdate,mpnum1,pronum13,pronum_sync) values (#{mccontent},#{mcauthor},now(),#{mpnum},#{pronum},#{pronum_sync})
+   </insert>
+   
+   <!-- 내피드댓글 삭제 -->
+   <delete id="myFeedCmmtDelete" parameterType="MyCommentVo">
+      delete from mycomment where mcnum=#{mcnum}
+   </delete>
+
+   <!-- 피드,댓글 등록,수정,삭제 end -->
+   <!-- 팔로우 등록,해제 start -->
+
+   <!-- 내 팔로잉 등록 -->
+   <insert id="myFollowingInsert" parameterType="MyFollowingVo">
+      insert into myfollowing (pronum11,mfgname,pronum_sync) values (#{pronum},#{mfgname},#{pronum_sync})
+   </insert>
+   
+   <!-- 상대 팔로워 등록 -->
+   <insert id="yourFollowerInsert" parameterType="MyFollowingVo">
+      insert into myfollower (pronum10,mfrname,pronum_sync) values (#{pronum},#{myFollower.mfrname},#{pronum_sync})
+   </insert>
+   
+   <!-- 내 팔로잉 해제 -->
+   <delete id="myFollowingDelete" parameterType="MyFollowingVo">
+      delete from myfollowing where pronum11=#{pronum} and pronum_sync=#{pronum_sync}
+   </delete>
+   
+   <!-- 상대 팔로워 해제 -->
+   <delete id="yourFollowerDelete" parameterType="MyFollowingVo">
+      delete from myfollower where pronum10=#{pronum} and pronum_sync=#{pronum_sync}
+   </delete>
+      
+   <!-- 내 팔로잉목록 갱신 -->
+   <select id="myFollowingRenewal" parameterType="MyFollowingVo" resultMap="following">
+      select a.mfgnum,b.* from myfollowing a inner join profile b on a.pronum_sync=b.pronum where pronum11=#{pronum}
+   </select>
+   
+   <!-- 팔로우 하고있는지 확인 -->
+   <select id="isFollow" parameterType="MyFollowerVo" resultType="int">
+   	select count(*) from myfollower where pronum_sync=#{pronum_sync} and pronum10=#{pronum};
+   </select>
+   
+   <!-- 팔로우 등록,해제 end -->
+   <!-- 피드좋아요 등록,해제 start -->
+      
+   <!-- 내피드 좋아요 등록 -->
+   <insert id="myFeedLikeInsert" parameterType="MyPostVo">
+      insert into mygood values (#{pronum},1,1,#{mpnum})
+   </insert>
+   
+   <!-- 내피드 좋아요 해제 -->
+   <delete id="myFeedLikeDelete" parameterType="MyPostVo">
+      delete from mygood where pronum6=#{pronum} and mpnum2=#{mpnum}
+   </delete>
+      
+   <!-- 내피드 좋아요 갯수 +1 -->
+   <update id="myFeedLikeOnePlus" parameterType="MyPostVo">
+      update mypost set mpgood=mpgood+1 where mpnum=#{mpnum}
+   </update>
+   
+   <!-- 내피드 좋아요 갯수 -1 -->
+   <update id="myFeedLikeOneMinus" parameterType="MyPostVo">
+      update mypost set mpgood=mpgood-1 where mpnum=#{mpnum}
+   </update>
+      
+   <!-- 내 좋아요목록 갱신 -->
+   <select id="myGoodRenewal" parameterType="MyGoodVo" resultMap="good">
+      select * from mygood where pronum6=#{pronum}
+   </select>
+   
+   <!-- 피드좋아요 등록,해제 end -->
+   <!-- 유저,피드 신고등록 start -->
+   
+   <!-- 내피드 신고등록 -->
+   <insert id="myFeedReport" parameterType="ReportListVo">
+      insert into reportlist (rlcategory,rlreport,rlreporter,reporterid,rltarget,
+      targetid,rldate,pronum_sync,pronum14,grnum5,gpnum4,canum4,mpnum3,gnnum1,rlstatus,rlphoto) values
+       ('내피드',#{rlreport},#{rlreporter},#{reporterid},#{rltarget},#{targetid},now(),#{pronum_sync},#{pronum},1,1,1,#{mpnum},1,1,#{rlphoto})
+   </insert>
+   
+   <!-- 유저 신고등록 -->
+   <insert id="userReport" parameterType="ReportListVo">
+      insert into reportlist (rlcategory,rlreport,rlreporter,reporterid,rltarget,
+      targetid,rldate,pronum_sync,pronum14,grnum5,gpnum4,canum4,mpnum3,gnnum1,rlstatus,rlphoto) values
+       ('유저',#{rlreport},#{rlreporter},#{reporterid},#{rltarget},#{targetid},now(),#{pronum_sync},#{pronum},1,1,1,1,1,1,#{rlphoto})
+   </insert>
+      
+   <!-- 신고당한유저 신고당한횟수+1 -->
+   <update id="userReportCountUpdate" parameterType="ReportListVo">
+      update myadmin set reporttotal=reporttotal+1 where pronum7=#{pronum}
+   </update>
+   
+   <!-- 유저,피드 신고등록 end -->
+   <!-- 프로필정보 출력,수정 start -->
+   
+   <!-- 내그룹 존재유무 체크 -->
+   <select id="myGroupCheck" parameterType="ProfileVo" resultType="int">
+      select count(*) from group1 where pronum1=#{pronum}
+   </select>
+   
+   <!-- 내사업자 존재유무 체크 -->
+   <select id="myVentureCheck" parameterType="ProfileVo" resultType="int">
+      select count(*) from myventure where pronum2=#{pronum}
+   </select>
+   
+   <!-- 사업자 미존재시 등록여부 체크 -->
+   <select id="myVentureRequestCheck" parameterType="ProfileVo" resultType="java.math.BigInteger">
+      select max(mvnumber) from updatewait where pronum9=#{pronum}
+   </select>
+   
+   <!-- 사업자 존재시 사업자정보출력 -->
+   <select id="myVentureInfo" parameterType="ProfileVo" resultType="MyVentureVo">
+      select * from myventure where pronum2=#{pronum}
+   </select>
+   
+   <!-- 캠핑장 존재유무 체크 -->
+   <select id="myCampCheck" parameterType="MyVentureVo" resultType="int">
+      select count(*) from camp where mvnum1=#{mvnum}
+   </select>
+   
+   <!-- 가입정보 본인확인 체크 -->
+   <select id="identify" parameterType="LoginVo" resultType="int">
+      select count(*) from profile where proid=#{id} and propw=#{pw}
+   </select>
+   
+   <!-- 내 프로필정보 출력 -->
+   <select id="myProfileInfo" parameterType="ProfileVo" resultType="ProfileVo">
+      select * from profile where pronum=#{pronum}
+   </select>
+   
+   <!-- 내 프로필정보 수정 -->
+   <update id="myProfileUpdate" parameterType="ProfileVo">
+      update profile set prophoto=#{prophoto},prointro=#{prointro} where pronum=#{pronum}
+   </update>
+   
+   <!-- 프로필정보 출력,수정 end -->
+   <!-- 내가입정보 출력,수정 start -->
+   
+   <!-- 내 가입정보 출력 -->
+   <select id="myJoinInfo" parameterType="ProfileVo" resultType="ProfileVo">
+      select pronum,proid,proname,propw,projender,proidnum,proaddr,projob from profile where pronum=#{pronum}
+   </select>
+   
+   <!-- 내 가입정보 수정 -->
+   <update id="myJoinUpdate" parameterType="ProfileVo">
+      update profile set propw=#{propw},proaddr=#{proaddr},projob=#{projob} where pronum=#{pronum}
+   </update>
+   
+   <!-- 소셜로그인 유무 체크 -->
+   <select id="socialMemberCheck" parameterType="ProfileVo" resultType="int">
+      select proprovide from profile where pronum=#{pronum}
+   </select>
+   
+   <!-- 내가입정보 출력,수정 end -->
+   <!-- 계정비활성화,탈퇴처리 start -->
+   
+   <!-- 계정 비활성화 처리 -->
+   <update id="inactiveUpdate" parameterType="ProfileVo">
+      update myadmin set propublic=2 where pronum7=#{pronum}
+   </update>
+   
+   <!-- 계정 탈퇴 처리 -->
+   <delete id="userGoodBye" parameterType="ProfileVo">
+      delete from profile where pronum=#{pronum}
+   </delete>
+   
+   <!-- 내 그룹에 가입된 인원수 체크 -->
+   <select id="myGroupUserCount" parameterType="GroupVo" resultType="int">
+      select count(*) from joingroup where grnum3=#{grnum}
+   </select>
+   
+   <!-- 계정비활성화,탈퇴처리 end -->
+   <!-- 그룹 등록 처리(비공식) -->
+   <insert id="myGroupInsert" parameterType="GroupVo">
+      insert into group1 (pronum1,grname,grphoto,grtotal,grintro,graddr,grdate,grventure,httitle1,httitle2,httitle3) values (#{pronum},#{grname},#{grphoto},1,#{grintro},#{graddr},now(),1,#{httitle1},#{httitle2},#{httitle3})
+   </insert>
+   
+   <select id="myGroup" parameterType="ProfileVo" resultMap="group">
+   		select * from group1 where pronum1=#{pronum}
+   </select>
+   
+   <insert id="myGroupJoin" parameterType="GroupVo">
+   		insert into joingroup (pronum8,grnum3,grname,jgdate,joinstatus) values (#{pronum},#{grnum},#{grname},now(),0);
+   </insert>
+   
+   <!-- 그룹 등록 처리(공식) -->
+   <insert id="myVentureGroupInsert" parameterType="GroupVo">
+      insert into group1 (pronum1,grname,grphoto,grtotal,grintro,graddr,grdate,grventure,httitle1,httitle2,httitle3) values (#{pronum},#{grname},#{grphoto},1,#{grintro},#{graddr},now(),2,#{httitle1},#{httitle2},#{httitle3})
+   </insert>
+   
+   <!-- 그룹등록처리 end -->
+
+   <!-- 사업자관리 start -->
+   
+   <!-- 사업자 등록신청 -->
+   <insert id="myVentureRequest" parameterType="UpdateWaitVo">
+      insert into updatewait (grnum4,grname,grsayone,pronum9,proname,mvaddr,mvnumber,mvphoto,mvname,uwdate,mvaddrsuv) values (1,'','',#{pronum},#{proname},#{mvaddr},#{mvnumber},#{mvphoto},#{mvname},now(),#{mvaddrsuv})
+   </insert>
+   
+   <!-- 사업자 정보수정 -->
+   <update id="myVentureUpdate" parameterType="MyVentureVo">
+      update myventure set mvaddr=#{mvaddr},mvname=#{mvname},mvaddrsuv=#{mvaddrsuv} where mvnum=#{mvnum}
+   </update>
+   
+   <!-- 사업자정보 수정시 캠핑장정보 수정 -->
+   <update id="campInfoUpdate" parameterType="MyVentureVo">
+      update camp set caname=#{mvname}, caaddr=#{mvaddr}, caaddrsuv=#{mvaddrsuv} where mvnum1=#{mvnum}
+   </update>
+   
+   <!-- 사업자관리 end -->
+   <!-- 캠핑장관리 start -->
+   
+   <!-- 캠핑장 등록 처리 -->
+   <insert id="myCampInsert" parameterType="CampVo">
+      insert into camp (caname,cagood,mvnum1,caphoto,caaddr,caintro,caguide1,caguide2,caguide3,caguide4,caguide5,caguide6,caguide7,cadate,cadateup,caavg,caintroone,caaddrsel,caaddrsuv,httitle1,httitle2,httitle3)
+       values (#{caname},0,#{mvnum},#{caphoto},#{caaddr},#{caintro},#{caguide1},#{caguide2},#{caguide3},#{caguide4},#{caguide5},#{caguide6},#{caguide7},now(),now(),0,#{caintroone},#{caaddrsel},#{caaddrsuv},#{httitle1},#{httitle2},#{httitle3})
+   </insert>
+
+   
+   <!-- 캠핑장 정보 출력 -->
+   <select id="myCampSelectOne" parameterType="MyVentureVo" resultMap="camp">
+      select * from camp where mvnum1=#{mvnum}
+   </select>
+   
+   <!-- 캠핑장 정보 수정 -->
+   <update id="myCampUpdate" parameterType="CampVo">
+      update camp set caphoto=#{caphoto},caintro=#{caintro},caguide1=#{caguide1},caguide2=#{caguide2},caguide3=#{caguide3},caguide4=#{caguide4},caguide5=#{caguide5},caguide6=#{caguide6}
+      , caguide7=#{caguide7},cadateup=now(),caintroone=#{caintroone},httitle1=#{httitle1},httitle2=#{httitle2},httitle3=#{httitle3} where canum=#{canum}
+   </update>
+	
+	<!-- 캠핑장 페이지 접속 -->
+	<select id="myCampPage" parameterType="MyVentureVo" resultMap="camp">
+		select a.*,d.pronum,d.proid,d.proname from camp a inner join myventure c on a.mvnum1=c.mvnum inner join profile d on c.pronum2=d.pronum where mvnum=#{mvnum}
+	</select>
+
+   <!-- 캠핑장관리 end -->
+
+</mapper>

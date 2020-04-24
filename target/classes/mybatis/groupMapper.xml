@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="group">
+
+	<!-- 그룹정보 조인 시에 참조되는 데이터 -->
+	<resultMap type="GroupVo" id="group">
+		<result column="grnum" property="grnum"/>
+		<result column="pronum1" property="pronum"/>
+		<result column="grname" property="grname"/>
+		<result column="grphoto" property="grphoto"/>
+		<result column="grtotal" property="grtotal"/>
+		<result column="grintro" property="grintro"/>
+		<result column="graddr" property="graddr"/>
+		<result column="grdate" property="grdate"/>
+		<result column="grtotal" property="grtotal"/>
+		<result column="grventure" property="grventure"/>
+		<result column="httitle1" property="httitle1"/>
+		<result column="httitle2" property="httitle2"/>
+		<result column="httitle3" property="httitle3"/>
+		<association property="profile" resultMap="profile3"/>
+	</resultMap>
+	<!-- 그룹피드목록 조인 시에 참조되는 데이터 -->
+	<resultMap type="GroupPostVo" id="grouppost">
+		<result column="gpnum" property="gpnum"/>
+		<result column="gpauthor" property="gpauthor"/>
+		<result column="gpphoto" property="gpphoto"/>
+		<result column="gpcontent" property="gpcontent"/>
+		<result column="gpdate" property="gpdate"/>
+		<result column="gpgood" property="gpgood"/>
+		<result column="grnum1" property="grnum"/>
+		<result column="gptotal" property="gptotal"/>
+		<result column="pronum3" property="pronum"/>
+		<result column="httitle1" property="httitle1"/>
+		<result column="httitle2" property="httitle2"/>
+		<result column="httitle3" property="httitle3"/>
+		<association property="profile" resultMap="profile3"/>
+	</resultMap>
+	<resultMap type="ProfileVo" id="profile3">
+		<result column="proname" property="proname"/>
+		<result column="proid" property="proid"/>
+		<result column="prophoto" property="prophoto"/>
+	</resultMap>
+	
+	<!-- 가입유저목록 조인 시에 참조되는 데이터 -->
+	<resultMap type="ProfileVo" id="profile">
+		<result column="pronum" property="pronum"/>
+		<result column="proname" property="proname"/>
+		<result column="proid" property="proid"/>
+		<result column="propw" property="propw"/>
+		<result column="proaddr" property="proaddr"/>
+		<result column="prointro" property="prointro"/>
+		<result column="projob" property="projob"/>
+		<result column="projender" property="projender"/>
+		<result column="prophoto" property="prophoto"/>
+		<result column="proidnum" property="proidnum"/>
+		<result column="prodate" property="prodate"/>
+		<result column="prorn" property="prorn"/>
+		<association property="joinGroup" resultMap="joingroup"/>
+	</resultMap>
+	<resultMap type="JoinGroupVo" id="joingroup">
+		<result column="jgnum" property="jgnum"/>
+		<result column="jgdate" property="jgdate"/>
+	</resultMap>
+
+	<!-- 가입신청목록 조인 시에 참조되는 데이터 -->
+	<resultMap type="UpdateWaitVo" id="update">
+		<result column="uwrn" property="uwrn"/>
+		<result column="grsayone" property="grsayone"/>
+		<association property="profile" resultMap="profile2"/>
+	</resultMap>
+	<!-- 가입유저목록 조인 시에 참조되는 데이터 -->
+	<resultMap type="JoinGroupVo" id="joinuser">
+		<result column="jgnum" property="jgnum"/>
+		<result column="grnum3" property="grnum"/>
+		<result column="grname" property="grname"/>
+		<association property="profile" resultMap="profile2"/>
+	</resultMap>
+	<!-- 내팔로잉목록 조인 시에 참조되는 데이터 --> 
+	<resultMap type="MyFollowingVo" id="following">
+		<result column="mfgnum" property="mfgnum" />
+		<result column="mfgname" property="mfgname" />
+		<result column="pronum11" property="pronum" />
+		<result column="pronum_sync" property="pronum_sync" />
+	</resultMap>
+	<resultMap type="ProfileVo" id="profile2">
+		<result column="pronum" property="pronum"/>
+		<result column="proname" property="proname"/>
+		<result column="proid" property="proid"/>
+		<result column="propw" property="propw"/>
+		<result column="proaddr" property="proaddr"/>
+		<result column="prointro" property="prointro"/>
+		<result column="projob" property="projob"/>
+		<result column="projender" property="projender"/>
+		<result column="prophoto" property="prophoto"/>
+		<result column="proidnum" property="proidnum"/>
+		<result column="prodate" property="prodate"/>
+	</resultMap>
+	
+	<!-- 그룹공지 조인시에 참조되는 데이터 -->
+	<resultMap type="GroupNoticeVo" id="groupnotice">
+		<result column="gnnum" property="gnnum"/>
+		<result column="gnauthor" property="gnauthor"/>
+		<result column="gnphoto" property="gnphoto"/>
+		<result column="gncontent" property="gncontent"/>
+		<result column="gndate" property="gndate"/>
+		<result column="grnum6" property="grnum"/>
+		<result column="gntotal" property="gntotal"/>
+		<association property="profile" resultMap="profile3"/>
+	</resultMap>
+	
+	<!-- 그룹공지 댓글 조인시에 참조되는 데이터 -->
+	<resultMap type="GroupNoticeCommentVo" id="groupnoticecmmt">
+		<result column="gncnum" property="gncnum"/>
+		<result column="gnccontent" property="gnccontent"/>
+		<result column="gncauthor" property="gncauthor"/>
+		<result column="gncdate" property="gncdate"/>
+		<result column="gnnum2" property="gnnum"/>
+		<result column="pronum15" property="pronum"/>
+		<result column="grnum8" property="grnum"/>
+		<association property="profile" resultMap="profile4"/>
+	</resultMap>
+	
+	<!-- 그룹피드댓글 조인시에 참조되는 데이터 -->
+	<resultMap type="GroupCommentVo" id="groupcmmt">
+		<result column="gcnum" property="gcnum"/>
+		<result column="gccontent" property="gccontent"/>
+		<result column="gcauthor" property="gcauthor"/>
+		<result column="gcdate" property="gcdate"/>
+		<result column="gpnum1" property="gpnum"/>
+		<result column="pronum4" property="pronum"/>
+		<result column="grnum7" property="grnum"/>
+		<association property="profile" resultMap="profile4"/>
+	</resultMap>
+	<resultMap type="ProfileVo" id="profile4">
+		<result column="prophoto" property="prophoto"/>
+	</resultMap>
+	
+	<!-- 내 좋아요목록 -->
+	<resultMap type="MyGoodVo" id="good">
+	   <result column="pronum6" property="pronum"/>
+	   <result column="canum3" property="canum"/>
+	   <result column="gpnum3" property="gpnum"/>
+	   <result column="mpnum2" property="mpnum"/>
+	</resultMap>
+	
+	<!--  채팅 관 -->
+	<resultMap type="GroupChatVo" id="groupchat">
+		<result column="grnum9" property="grnum"/>
+		<result column="pronum17" property="pronum"/>
+		<result column="mymsg" property="mymsg"/>
+		<result column="msgdate" property="msgdate"/>
+		<result column="joinstatus" property="joinstatus"/>
+		<association property="profile" resultMap="profile2"/>
+	</resultMap>
+	
+	<!-- 그룹화면출력 전 체크 start -->
+	
+	<!-- 공식그룹 유무 체크 -->
+	<select id="groupVentureCheck" parameterType="GroupVo" resultType="int">
+		select count(*) from group1 where grventure=2 and grnum=#{grnum}
+	</select>
+		
+	<!-- 가입된 그룹유무 체크 -->
+	<select id="joinGroupCheck" parameterType="UpdateWaitVo" resultType="int">
+		select count(*) from joingroup where grnum3=#{grnum} and pronum8=#{pronum}
+	</select>
+	
+	<!-- 그룹 가입 대기유무 체크 -->
+	<select id="updateGroupCheck" parameterType="UpdateWaitVo" resultType="int">
+		select count(*) from updatewait where grnum4=#{grnum} and pronum9=#{pronum}
+	</select>
+
+	<!-- 그룹 가입신청 -->
+	<insert id="joinGroupRequest" parameterType="UpdateWaitVo">
+		insert into updatewait (grnum4,grname,grsayone,pronum9,proname,mvaddr,mvnumber,mvphoto,mvname,uwdate) values (#{grnum},#{grname},#{grsayone},#{pronum},#{proname},'',0,'','',now())
+	</insert>
+	
+	<!-- 그룹화면출력 전 체크 end -->
+	<!-- 화면출력 start -->
+	
+	<!-- 그룹정보 출력 -->
+	<select id="groupSelectOne" parameterType="GroupVo" resultMap="group">
+		select a.*,c.proname,c.proid from group1 a inner join profile c on a.pronum1=c.pronum where grnum=#{grnum}
+	</select>
+	
+	<!-- 그룹공지사항 출력 -->
+	<select id="groupNotice" parameterType="GroupVo" resultType="GroupNoticeVo">
+		select * from (select @rownum:=@rownum+1 as grrn,a.* from groupnotice a,(select @rownum:=0) r where grnum6=#{grnum} order by gndate desc) b where grrn<![CDATA[ >= ]]>1 and grrn<![CDATA[ <= ]]>5
+	</select>
+	
+	<!-- 그룹공지사항 상세출력 -->
+	<select id="groupNoticeDetail" parameterType="GroupNoticeVo" resultMap="groupnotice">
+		select d.*,(select count(*) from groupnoticecomment a where a.gnnum2=d.gnnum) as gntotal from (select a.*,c.prophoto,c.proname,c.proid,c.pronum,b.grname from groupnotice a inner join group1 b on a.grnum6=b.grnum inner join profile c on b.pronum1=c.pronum where gnnum=#{gnnum}) d
+	</select>
+	
+	<!-- 그룹공지사항 댓글출력 -->
+	<select id="groupNoticeCmmt" parameterType="GroupNoticeCommentVo" resultMap="groupnoticecmmt">
+		select a.*,b.prophoto from groupnoticecomment a inner join profile b on a.pronum15=b.pronum where gnnum2=#{gnnum} order by gncdate desc
+	</select>
+	
+	<!-- 그룹공지사항 댓글 더보기 비동기 -->
+	<select id="groupNoticeDetailCmmt" parameterType="groupNoticeCommentVo" resultMap="groupnoticecmmt">
+		select * from (select @rownum:=@rownum+1 as prorn,a.*,b.prophoto from groupnoticecomment a 
+		inner join profile b on a.pronum15=b.pronum,(select @rownum:=0) r where gnnum2=#{gnnum} order by gncdate desc) c 
+		where prorn<![CDATA[ >= ]]>#{pageSearch.startnum} and prorn<![CDATA[ <= ]]>#{pageSearch.endnum}+1
+	</select>
+	
+	
+	<!-- 그룹피드 출력 -->
+	<select id="groupFeed" parameterType="GroupPostVo" resultMap="grouppost">
+		select d.*,(select count(*) from groupcomment where gpnum1=d.gpnum) as gptotal from (select a.*,c.prophoto,c.proid,c.proname,c.pronum from grouppost a inner join profile c on a.pronum3=c.pronum where grnum1=#{grnum} order by gpdate desc) d
+	</select>
+	
+	<!-- 그룹피드 댓글출력 -->
+	<select id="groupFeedCmmt" parameterType="GroupCommentVo" resultMap="groupcmmt">
+		select a.*,b.prophoto from groupcomment a inner join profile b on a.pronum4=b.pronum where grnum7=#{grnum} order by gcdate desc
+	</select>
+	
+	<!-- 그룹피드댓글 더보기 비동기 -->
+	<select id="groupDetailCmmt" parameterType="GroupPostVo" resultMap="groupcmmt">
+		select * from (select @rownum:=@rownum+1 as prorn,a.*,b.prophoto from groupcomment a inner join profile b
+		 on a.pronum4=b.pronum,(select @rownum:=0) r where gpnum1=#{gpnum} order by gcdate desc) c where
+		  prorn<![CDATA[ >= ]]>#{pageSearch.startnum} and prorn<![CDATA[ <= ]]>#{pageSearch.endnum}+1
+	</select>
+	
+	<!-- 그룹인원정보 출력 -->
+	<select id="groupUserInfo" parameterType="GroupVo" resultMap="joinuser">
+		select a.jgnum,a.grnum3,a.grname,b.* from joingroup a inner join profile b on a.pronum8=b.pronum where grnum3=#{grnum}
+	</select>
+		
+	<!-- 가입된그룹 탈퇴 -->
+	<delete id="groupOut" parameterType="JoinGroupVo">
+		delete from joingroup where pronum8=#{pronum} and grnum3=#{grnum}
+	</delete>
+	
+	<!-- 화면출력 end -->
+	<!-- 그룹 피드,공지,댓글 등록,수정,삭제 start -->
+	
+	<!-- 그룹 피드등록 -->
+	<insert id="groupFeedInsert" parameterType="GroupPostVo">
+		insert into grouppost (gpauthor,gpcontent,gpdate,gpgood,grnum1,pronum3,gpphoto,httitle1,httitle2,httitle3) values (#{gpauthor},#{gpcontent},now(),0,#{grnum},#{pronum},#{gpphoto},#{httitle1},#{httitle2},#{httitle3})
+	</insert>
+	
+	<!-- 그룹 피드 수정 전 출력 -->
+	<select id="groupFeedDetail" parameterType="GroupPostVo" resultMap="grouppost" >
+		select a.*,b.prophoto from grouppost as a inner join profile as b on a.pronum3=b.pronum where a.gpnum = #{gpnum}
+	</select>
+	
+	<!-- 그룹 피드수정 -->
+	<update id="groupFeedUpdate" parameterType="GroupPostVo">
+		update grouppost set gpcontent=#{gpcontent},gpphoto=#{gpphoto},httitle1=#{httitle1},httitle2=#{httitle2},httitle3=#{httitle3} where gpnum=#{gpnum}
+	</update>
+	
+	<!-- 그룹 피드삭제 -->
+	<delete id="groupFeedDelete" parameterType="GroupPostVo">
+		delete from grouppost where gpnum=#{gpnum}
+	</delete>
+	
+	<!-- 그룹 피드 댓글등록 -->
+	<insert id="groupFeedCmmtInsert" parameterType="GroupCommentVo">
+		insert into groupcomment (gccontent,gcauthor,gcdate,gpnum1,pronum4,grnum7) values (#{gccontent},#{gcauthor},now(),#{gpnum},#{pronum},#{grnum})
+	</insert>
+	
+	<!-- 그룹 피드 댓글삭제 -->
+	<delete id="groupFeedCmmtDelete" parameterType="GroupCommentVo">
+		delete from groupcomment where gcnum=#{gcnum}
+	</delete>
+	
+	<!-- 공지사항 등록 -->
+	<insert id="groupNoticeInsert" parameterType="GroupNoticeVo">
+		insert into groupnotice (gnauthor,gnphoto,gncontent,gndate,grnum6) values (#{gnauthor},#{gnphoto},#{gncontent},now(),#{grnum})
+	</insert>
+	
+	<!-- 공지사항 수정 -->
+	<update id="groupNoticeUpdate" parameterType="GroupNoticeVo">
+		update groupnotice set gncontent=#{gncontent},gnphoto=#{gnphoto} where gnnum=#{gnnum}
+	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="groupNoticeDelete" parameterType="GroupNoticeVo">
+		delete from groupnotice where gnnum=#{gnnum}
+	</delete>
+		
+	<!-- 그룹공지사항 댓글등록 -->
+	<insert id="groupNoticeCmmtInsert" parameterType="GroupNoticeCommentVo">
+		insert into groupnoticecomment (gnccontent,gncauthor,gncdate,gnnum2,pronum15,grnum8) values (#{gnccontent},#{gncauthor},now(),#{gnnum},#{pronum},#{grnum})
+	</insert>
+	
+	<!-- 그룹공지사항 댓글삭제 -->
+	<delete id="groupNoticeCmmtDelete" parameterType="GroupNoticeCommentVo">
+		delete from groupnoticecomment where gncnum=#{gncnum}
+	</delete>
+	
+	<!-- 그룹 피드,공지,댓글 등록,수정,삭제 end -->
+	<!-- 그룹,피드,공지 신고등록 start -->
+	
+	<!-- 그룹 신고등록 -->
+	<insert id="groupReportInsert" parameterType="ReportListVo">
+		insert into reportlist (rlcategory,rlreport,rlreporter,reporterid,rltarget,targetid,rldate,pronum_sync,pronum14,grnum5,gpnum4,canum4,mpnum3,gnnum1,rlstatus,rlphoto)
+		 values ('그룹',#{rlreport},#{rlreporter},#{reporterid},#{rltarget},#{targetid},now(),#{pronum_sync},#{pronum},#{grnum},1,1,1,1,1,#{rlphoto})
+	</insert>
+	
+	<!-- 그룹피드 신고등록 -->
+	<insert id="groupFeedReportInsert" parameterType="ReportListVo">
+		insert into reportlist (rlcategory,rlreport,rlreporter,reporterid,rltarget,targetid,rldate,pronum_sync,pronum14,grnum5,gpnum4,canum4,mpnum3,gnnum1,rlstatus,rlphoto)
+		 values ('그룹피드',#{rlreport},#{rlreporter},#{reporterid},#{rltarget},#{targetid},now(),#{pronum_sync},#{pronum},1,#{gpnum},1,1,1,1,#{rlphoto})
+	</insert>
+	
+	<!-- 그룹공지사항 신고등록 -->
+	<insert id="groupNoticeReportInsert" parameterType="ReportListVo">
+		insert into reportlist (rlcategory,rlreport,rlreporter,reporterid,rltarget,targetid,rldate,pronum_sync,pronum14,grnum5,gpnum4,canum4,mpnum3,gnnum1,rlstatus,rlphoto)
+		 values ('공지피드',#{rlreport},#{rlreporter},#{reporterid},#{rltarget},#{targetid},now(),#{pronum_sync},#{pronum},1,1,1,1,#{gnnum},1,#{rlphoto})
+	</insert>
+	
+	<!-- 신고당한유저 신고당한횟수 +1 -->
+	<update id="groupReportCountUpdate" parameterType="ReportListVo">
+		update myadmin set reporttotal=reporttotal+1 where pronum7=#{pronum_sync}
+	</update>
+	
+	<!-- 그룹,피드,공지 신고등록 end -->
+	<!-- 피드좋아요 등록,해제 start -->
+	
+	<!-- 그룹피드좋아요등록 -->
+	<insert id="groupFeedLikeInsert" parameterType="MyGoodVo">
+		insert into mygood values (#{pronum},1,#{gpnum},1);
+	</insert>
+	
+	<!-- 그룹피드좋아요해제 -->
+	<delete id="groupFeedLikeDelete" parameterType="MyGoodVo">
+		delete from mygood where pronum6=#{pronum} and gpnum3=#{gpnum}
+	</delete>
+	
+	<!-- 그룹피드 좋아요등록시 그룹피드좋아요 +1 -->
+	<update id="groupFeedLikeOnePlus" parameterType="GroupPostVo">
+		update grouppost set gpgood=gpgood+1 where gpnum=#{gpnum}
+	</update>
+	
+	<!-- 그룹피드 좋아요해제시 그룹피드좋아요 -1 -->
+	<update id="groupFeedLikeOneMinus" parameterType="GroupPostVo">
+		update grouppost set gpgood=gpgood-1 where gpnum=#{gpnum}
+	</update>
+		
+	<!-- 내 좋아요목록 갱신 -->
+	<select id="myGoodRenewal" parameterType="MyGoodVo" resultMap="good">
+		select * from mygood where pronum6=#{pronum}
+	</select>
+	
+	<!-- 피드좋아요 등록,해제 end -->
+	<!-- 팔로잉,팔로워등록,해제 start -->
+	
+	<!-- 내 팔로잉 등록 -->
+	<insert id="myFollowingInsert" parameterType="MyFollowingVo">
+		insert into myfollowing (pronum11,mfgname,pronum_sync) values (#{pronum},#{mfgname},#{pronum_sync})
+	</insert>
+   
+	<!-- 상대 팔로워 등록 -->
+	<insert id="yourFollowerInsert" parameterType="MyFollowingVo">
+	   insert into myfollower (pronum10,mfrname,pronum_sync) values (#{pronum},#{myFollower.mfrname},#{pronum_sync})
+	</insert>
+   
+	<!-- 내 팔로잉 해제 -->
+	<delete id="myFollowingDelete" parameterType="MyFollowingVo">
+	   delete from myfollowing where pronum11=#{pronum} and pronum_sync=#{pronum_sync}
+	</delete>
+   
+	<!-- 상대 팔로워 해제 -->
+	<delete id="yourFollowerDelete" parameterType="MyFollowingVo">
+	   delete from myfollower where pronum10=#{pronum} and pronum_sync=#{pronum_sync}
+	</delete>
+   
+	<!-- 내 팔로잉목록 갱신 -->
+	<select id="myFollowingRenewal" parameterType="MyFollowingVo" resultMap="following">
+	   select * from myfollowing where pronum11=#{pronum}
+	</select>
+	
+	<!-- 팔로잉,팔로워등록,해제 end -->
+	<!-- 그룹관리 start -->
+	
+	<!-- 그룹정보 수정 -->
+	<update id="groupInfoUpdate" parameterType="GroupVo">
+		update group1 set grname=#{grname},grphoto=#{grphoto},grintro=#{grintro},graddr=#{graddr},httitle1=#{httitle1},httitle2=#{httitle2},httitle3=#{httitle3} where grnum=#{grnum}
+	</update>
+	
+	<!-- 그룹관리 end -->
+	<!-- 그룹원관리 start -->
+	
+	<!-- 그룹에 가입된 유저 출력 -->
+	<select id="groupUserSelectAll" parameterType="GroupVo" resultMap="profile">
+		select * from (select * from (select @rnum:=@rnum+1 as prorn,c.* from
+		(select @rownum:=@rownum+1 as prorn1,a.jgnum,a.jgdate,b.* from
+		joingroup a inner join profile b on a.pronum8=b.pronum,(SELECT
+		@ROWNUM:=0) R
+		where grnum3=#{grnum} order by proname asc) c,(select @rnum:=0) r2 order by
+		prorn1 desc) d order by prorn desc) e where prorn1<![CDATA[ >= ]]>#{pageSearch.startnum} and prorn1<![CDATA[ <= ]]>#{pageSearch.endnum}
+	</select>
+	
+	<!-- 그룹에 가입된 유저 검색으로출력 -->
+	<select id="groupUserSearch" parameterType="GroupVo" resultMap="profile">
+		select * from (select * from (select @rnum:=@rnum+1 as prorn,c.* from
+		(select @rownum:=@rownum+1 as prorn1,a.jgnum,a.jgdate,b.* from
+		joingroup a inner join profile b on a.pronum8=b.pronum,(SELECT
+		@ROWNUM:=0) R
+		where proname like concat('%',#{pageSearch.keyword},'%') and grnum3=#{grnum}
+		order by proname asc) c,(select @rnum:=0) r2 order by prorn1 desc) d
+		order by prorn desc) e where prorn1<![CDATA[ >= ]]>#{pageSearch.startnum} and prorn1<![CDATA[ <= ]]>#{pageSearch.endnum}
+	</select>
+	
+	<!-- 가입유저조회 로우갯수 -->
+	<select id="groupUserTotalCount" parameterType="GroupVo" resultType="int">
+		select count(*) from joingroup a inner join profile b on a.pronum8 = b.pronum where grnum3=#{grnum} and proname like concat ('%', #{pageSearch.keyword},'%')
+	</select>
+	
+	<!-- 그룹유저 추방 -->
+	<delete id="groupUserKick" parameterType="JoinGroupVo">
+		delete from joingroup where jgnum in 
+		<foreach item="item" index="index" collection="joinGroupList" open="(" separator="," close=")">
+      	 #{item.jgnum}
+ 		</foreach>
+	</delete>
+	
+	<!-- 그룹유저 추방시 총원감소 -@ -->
+	<update id="groupTotalMinus" parameterType="GroupVo">
+		update group1 set grtotal=#{grtotal}-#{jointot} where grnum=#{grnum}
+	</update>
+	
+	<!-- 그룹유저 추방시 해당채팅방 리스트에서 삭제 -->
+	<delete id="groupChatDelete"  parameterType="JoinGroupVo">
+		delete from joingroup where jgnum in 
+		<foreach item="item" index="index" collection="joinGroupList" open="(" separator="," close=")">
+      	 #{item.jgnum}
+ 		</foreach>
+	</delete>
+	
+	<!-- 그룹유저 전부추방 그룹장 제외 -->
+	<delete id="groupUserAllKick" parameterType="GroupVo">
+		delete from joingroup where grnum3=#{grnum} and pronum8!=#{pronum};
+	</delete>
+	
+	<!-- 그룹원관리 end -->
+	<!-- 가입신청조회 start -->
+	
+	<!-- 그룹가입신청 유저목록 -->
+	<select id="groupRequestSelectAll" parameterType="GroupVo" resultMap="update">
+		select * from (select * from (select @rnum:=@rnum+1 as uwrn,i.* from (select @rownum:=@rownum+1 as uwrn1,a.*,b.grsayone from profile a inner join updatewait b on a.pronum=b.pronum9,(SELECT @ROWNUM:=0) R
+		 where grnum4=#{grnum} order by proname asc) i,(select @rnum:=0) r2 order by uwrn1 desc) j order by uwrn desc) z where uwrn1<![CDATA[ >= ]]>#{pageSearch.startnum} and uwrn1<![CDATA[ <= ]]>#{pageSearch.endnum};
+	</select>
+	
+	<!-- 가입신청 승인 -->
+	<insert id="groupRequestHello" parameterType="UpdateWaitVo">
+		insert into joingroup (pronum8,grnum3,grname,jgdate, joinstatus) values 
+		<foreach item="item" index="index" collection="updateList" separator=",">
+      	 (#{item.pronum},#{item.grnum},#{item.grname},now(), 0)
+ 		</foreach>
+	</insert>
+	
+	<!-- 가입신청 승인시 그룹원 총원증가 +@ -->
+	<update id="groupTotalPlus" parameterType="GroupVo">
+		update group1 set grtotal=#{grtotal}+#{jointot} where grnum=#{grnum}
+	</update>
+	<!-- 가입신청 승인시 채팅목록에 그룹 등 -->
+	<insert id="groupChatInsert" parameterType="UpdateWaitVo">
+		insert into groupchat (grnum9, pronum17, mymsg, msgdate, joinstatus) values
+		<foreach item="item" index="index" collection="updateList" separator=",">
+			(#{item.grnum}, #{item.pronum}, '', now(), 0)
+		</foreach>
+	</insert>
+	
+	<!-- 가입신청 거절(업데이트 테이블 데이터삭제) -->
+	<delete id="groupRequestSorry" parameterType="UpdateWaitVo">
+		delete from updatewait where (grnum4,pronum9) in 
+		<foreach item="item" index="index" collection="updateList" open="(" separator="," close=")">
+      	 (#{item.grnum},#{item.pronum})
+ 		</foreach>
+	</delete>
+
+	<!-- 가입신청조회 로우갯수 -->
+	<select id="groupRequestTotalCount" parameterType="GroupVo" resultType="int">
+		select count(*) from updatewait where grnum4=#{grnum}
+	</select>
+	
+	<!-- 가입신청조회 end -->
+	<!-- 그룹삭제 start -->
+	
+	<!-- 그룹삭제 -->
+	<delete id="groupDelete" parameterType="GroupVo">
+		delete from group1 where grnum=#{grnum}
+	</delete>
+
+	<!-- 그룹삭제 end -->
+	
+	<!-- 채팅 start -->
+	<!-- 채팅접속시 접속상태 on -->
+	<update id="groupChatUserUpdate" parameterType="GroupVo">
+		update joingroup set joinstatus=1 where pronum8=${profile.pronum} and grnum3=${grnum}
+	</update>
+	
+	<!--채팅퇴장시 접속상태 off -->
+	<update id="groupChatUserUpdateRe" parameterType="GroupVo">
+		update joingroup set joinstatus=0 where pronum8=${profile.pronum} and grnum3=${grnum}
+	</update>
+	
+	<!-- 접속상태 on인 그룹유저 출력 -->
+	<select id="groupChatUser" parameterType="GroupVo" resultMap="joinuser">
+		select * from joingroup a inner join profile b on a.pronum8=b.pronum where grnum3=${grnum} and joinstatus=1
+	</select>
+	
+	<!-- 채팅 end -->
+</mapper>

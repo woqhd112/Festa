@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+<!-- 로그인유지 비번값출력 -->
+	<select id="loginCookie" parameterType="LoginVo" resultType="ProfileVo">
+		select propw from profile where proid=#{id}
+	</select>
+
+	<!-- 내 가입그룹목록 조인 시에 참조되는데이터 -->
+   <resultMap type="JoinGroupVo" id="joingroup">
+      <result column="jgnum" property="jgnum"/>
+      <result column="pronum8" property="pronum"/>
+      <result column="grnum3" property="grnum"/>
+      <result column="jgdate" property="jgdate"/>
+      <association property="group" resultMap="group"/>
+   </resultMap>
+   <resultMap type="GroupVo" id="group">
+      <result column="grname" property="grname"/>
+      <result column="grphoto" property="grphoto"/>
+   </resultMap>
+	
+	<!-- 내 북마크목록 조인 시에 참조되는데이터 -->
+	<resultMap type="MyBookMarkVo" id="mybookmark">
+		<id column="dummy_column_for_unique"/>
+		<result column="pronum16" property="pronum"/>
+		<association property="camp" resultMap="camp"/>
+	</resultMap>
+	<resultMap type="CampVo" id="camp">
+		<result column="canum" property="canum"/>
+		<result column="caname" property="caname"/>
+		<result column="cagood" property="cagood"/>
+		<result column="mvnum1" property="mvnum"/>
+		<result column="caphoto" property="caphoto"/>
+		<result column="caaddr" property="caaddr"/>
+		<result column="caintro" property="caintro"/>
+		<result column="caguide1" property="caguide1"/>
+		<result column="caguide2" property="caguide2"/>
+		<result column="caguide3" property="caguide3"/>
+		<result column="caguide4" property="caguide4"/>
+		<result column="caguide5" property="caguide5"/>
+		<result column="caguide6" property="caguide6"/>
+		<result column="caguide7" property="caguide7"/>
+		<result column="cadate" property="cadate"/>
+		<result column="cadateup" property="cadateup"/>
+		<result column="caavg" property="caavg"/>
+		<result column="caintroone" property="caintroone"/>
+		<result column="caaddrsel" property="caaddrsel"/>
+		<result column="caaddrsuv" property="caaddrsuv"/>
+	</resultMap>
+
+<!-- 내 좋아요목록 -->
+<resultMap type="MyGoodVo" id="good">
+   <result column="pronum6" property="pronum"/>
+   <result column="canum3" property="canum"/>
+   <result column="gpnum3" property="gpnum"/>
+   <result column="mpnum2" property="mpnum"/>
+</resultMap>
+
+	<!-- 로그인처리
+		로그인 시 담을 데이터 start -->
+
+	<!-- 로그인체크 (로그인확인 cnt와 로그인했을시 회원정보 출력) -->
+	<select id="login" parameterType="LoginVo" resultType="ProfileVo">
+		select count(*) as logincheck,max(pronum) as pronum,max(proname) as proname, max(proid) as proid,
+		 max(propw) as propw, max(proaddr) as proaddr, max(projob) as projob, max(projender) as projender,
+		  max(proidnum) as proidnum,max(prophoto) as prophoto , max(proprovide) as proprovide from profile where proid=#{id} and propw=#{pw}
+	</select>
+	
+	<!-- 로그인성공시 비활성화 항상 1(활성화)로 업데이트 -->
+	<update id="inactive" parameterType="ProfileVo">
+		update myadmin set propublic=1 where pronum7=#{pronum}
+	</update>
+	
+	<!-- 정지,추방회원 체크 -->
+	<select id="stopAndKick" parameterType="ProfileVo" resultType="MyAdminVo">
+		select propublic,prostop,prokick,stopresult,stoplv from myadmin where pronum7=#{pronum}
+	</select>
+	
+	<!-- 내 가입그룹목록 리스트 -->
+	<select id="myJoinGroupList" parameterType="ProfileVo" resultMap="joingroup">
+		select b.*,(select grphoto from group1 c where c.grnum=b.grnum3) as grphoto,(select grname from group1 c where c.grnum=b.grnum3) as grname from (select jgnum,pronum8,grnum3,jgdate from joingroup where pronum8=#{pronum}) b
+	</select>
+	<!-- 내 북마크목록 리스트 -->
+	<select id="myBookMarkList" parameterType="ProfileVo" resultMap="mybookmark">
+		select a.pronum16,b.* from mybookmark a inner join camp b on a.canum5=b.canum where pronum16=#{pronum}
+	</select>
+			
+	<!-- 추천그룹리스트 -->
+	<select id="groupList" resultType="GroupVo">
+		select * from (SELECT @ROWNUM:=@ROWNUM+1 as grrn, A.* FROM group1 A, (SELECT @ROWNUM:=0) R order by grtotal desc) c where grrn<![CDATA[ >= ]]>1 and grrn<![CDATA[ <= ]]>3
+	</select>
+	
+	<!-- 신규캠핑장리스트 -->
+	<select id="campList" resultType="CampVo">									
+		select * from (select @rownum:=@rownum+1 as carn,camp.* from camp,(SELECT @ROWNUM:=0) R order by cadate desc) c where carn<![CDATA[ >= ]]>1 and carn<![CDATA[ <= ]]>3
+	</select>
+	
+	<!-- 내좋아요목록 출력 -->
+	<select id="myGoodSelectAll" parameterType="ProfileVo" resultMap="good">
+   		select * from mygood where pronum6=#{pronum}
+	</select>	
+	
+	<!-- 내팔로잉목록 출력 -->
+	<select id="myFollowing" parameterType="ProfileVo" resultType="MyFollowingVo">
+		select * from myfollowing where pronum11=#{pronum}
+	</select>
+	
+	<!-- 로그인처리
+		로그인 시 담을 데이터 end -->
+	<!-- 회원가입처리 start -->
+	
+	<!-- 회원가입에서 아이디중복체크 -->
+	<select id="idDuplicate" parameterType="LoginVo" resultType="int">
+		select count(*) from profile where proid=#{id}
+	</select>
+	
+	<!-- 회원가입등록 일반로그인 -->
+	<insert id="memberInsert_nomal" parameterType="ProfileVo">
+		insert into profile (proname,proid,propw,proaddr,projob,projender,proidnum,prophoto,prodate,proprovide) values 
+		(#{proname},#{proid},#{propw},#{proaddr},#{projob},#{projender},#{proidnum},#{prophoto},now(),0)
+	</insert>
+	
+	<!-- 회원가입등록 소셜로그인 -->
+	<insert id="memberInsert_social" parameterType="ProfileVo">
+		insert into profile (proname,proid,propw,proaddr,projob,projender,proidnum,prophoto,prodate,proprovide) values 
+		(#{proname},#{proid},#{propw},#{proaddr},#{projob},#{projender},#{proidnum},#{prophoto},now(),1)
+	</insert>
+	
+	<!-- 회원가입한 회원 pronum받기 -->
+	<select id="find_pronum" parameterType="ProfileVo" resultType="ProfileVo">
+		select * from profile where proname=#{proname} and proid=#{proid}
+	</select>
+	
+	<!-- 회원가입 완료시 내관리테이블 생성 -->
+	<insert id="myadminInsert" parameterType="ProfileVo">
+		insert into myadmin values(#{pronum},1,1,1,0,0,'',0)
+	</insert>
+	
+	<!-- 회원가입처리 end -->
+	<!-- 아이디찾기 start -->
+	
+	<!-- 아이디찾기 -->
+	<select id="findId" parameterType="LoginVo" resultType="ProfileVo">
+		select proid,prodate from profile where proname=#{proname} and proidnum=#{proidnum}
+	</select>
+	
+	<!-- 아이디찾기 end -->
+	<!-- 비번찾기 start -->
+	
+	<!-- 비밀번호찾기 -->
+	<select id="findPw" parameterType="LoginVo" resultType="ProfileVo">
+		select * from profile where proid=#{id} and proidnum=#{proidnum}
+	</select>
+	
+	<!-- 비번찾기 후 비번수정 -->
+	<update id="pwUpdate" parameterType="ProfileVo">
+		update profile set propw=#{propw} where pronum=#{pronum}
+	</update>
+
+	<!-- 비번찾기 end -->
+	
+</mapper>

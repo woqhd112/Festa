@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+  	<typeAliases>
+  		<typeAlias alias="CampReviewVo" type="com.fin.festa.model.entity.CampReviewVo" />
+  		<typeAlias alias="CampVo" type="com.fin.festa.model.entity.CampVo" />
+  		<typeAlias alias="GroupCommentVo" type="com.fin.festa.model.entity.GroupCommentVo" />
+  		<typeAlias alias="GroupNoticeCommentVo" type="com.fin.festa.model.entity.GroupNoticeCommentVo" />
+  		<typeAlias alias="GroupNoticeVo" type="com.fin.festa.model.entity.GroupNoticeVo" />
+  		<typeAlias alias="GroupPostVo" type="com.fin.festa.model.entity.GroupPostVo" />
+  		<typeAlias alias="GroupVo" type="com.fin.festa.model.entity.GroupVo" />
+  		<typeAlias alias="JoinGroupVo" type="com.fin.festa.model.entity.JoinGroupVo" />
+  		<typeAlias alias="LoginVo" type="com.fin.festa.model.entity.LoginVo" />
+  		<typeAlias alias="MyAdminVo" type="com.fin.festa.model.entity.MyAdminVo" />
+  		<typeAlias alias="MyBookMarkVo" type="com.fin.festa.model.entity.MyBookMarkVo" />
+  		<typeAlias alias="MyCommentVo" type="com.fin.festa.model.entity.MyCommentVo" />
+  		<typeAlias alias="MyFollowerVo" type="com.fin.festa.model.entity.MyFollowerVo" />
+  		<typeAlias alias="MyFollowingVo" type="com.fin.festa.model.entity.MyFollowingVo" />
+  		<typeAlias alias="MyGoodVo" type="com.fin.festa.model.entity.MyGoodVo" />
+  		<typeAlias alias="MyPostVo" type="com.fin.festa.model.entity.MyPostVo" />
+  		<typeAlias alias="MyVentureVo" type="com.fin.festa.model.entity.MyVentureVo" />
+  		<typeAlias alias="PageSearchVo" type="com.fin.festa.model.entity.PageSearchVo" />
+  		<typeAlias alias="ProfileVo" type="com.fin.festa.model.entity.ProfileVo" />
+  		<typeAlias alias="ReportListVo" type="com.fin.festa.model.entity.ReportListVo" />
+  		<typeAlias alias="UpdateWaitVo" type="com.fin.festa.model.entity.UpdateWaitVo" />
+  		<typeAlias alias="WeekVo" type="com.fin.festa.model.entity.WeekVo" />
+  		<typeAlias alias="WeekCountVo" type="com.fin.festa.model.entity.WeekCountVo" />
+  		<typeAlias alias="PreferableLocationVo" type="com.fin.festa.model.entity.PreferableLocationVo" />
+  		<typeAlias alias="AllCountVo" type="com.fin.festa.model.entity.AllCountVo" />
+  		<typeAlias alias="AgeCountVo" type="com.fin.festa.model.entity.AgeCountVo" />
+  		<typeAlias alias="DateCalculate" type="com.fin.festa.util.DateCalculate" />
+  		<typeAlias alias="FeedVo" type="com.fin.festa.model.entity.FeedVo" />
+  		<typeAlias alias="GroupChatVo" type="com.fin.festa.model.entity.GroupChatVo" />
+  	</typeAliases>
+  	<mappers>
+  		<mapper resource="mybatis/adminMapper.xml"/>
+  		<mapper resource="mybatis/campMapper.xml"/>
+  		<mapper resource="mybatis/feedMapper.xml"/>
+  		<mapper resource="mybatis/groupMapper.xml"/>
+  		<mapper resource="mybatis/indexMapper.xml"/>
+  		<mapper resource="mybatis/memberMapper.xml"/>
+  		<mapper resource="mybatis/newsMapper.xml"/>
+  		<mapper resource="mybatis/searchMapper.xml"/>
+  		<mapper resource="mybatis/userMapper.xml"/>
+  	</mappers>
+  </configuration>

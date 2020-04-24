@@ -1,0 +1,1206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="false" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="com.fin.festa.controller" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1070" width="416" x="49" y="-241"/>    
+    <display autosize="false" stereotype="false" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="2" language="java" name="com.fin.festa.controller.IndexController" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/controller/IndexController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="176" y="-109"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.fin.festa.controller.FeedController" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/controller/FeedController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="173" y="-9"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.fin.festa.controller.MemberController" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/controller/MemberController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="238" y="111"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.fin.festa.controller.GroupController" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/controller/GroupController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="174" y="241"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.fin.festa.controller.NewsController" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/controller/NewsController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="171" y="351"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.fin.festa.controller.SearchController" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/controller/SearchController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="177" y="450"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.fin.festa.controller.UserController" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/controller/UserController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="171" y="560"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.fin.festa.controller.CampController" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/controller/CampController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="172" y="667"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.fin.festa.controller.AdminController" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/controller/AdminController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="174" y="775"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <package id="11" language="java" name="com.fin.festa.service" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1068" width="519" x="607" y="-239"/>    
+    <display autosize="false" stereotype="false" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="12" language="java" name="com.fin.festa.service.SearchService" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/SearchService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="711" y="441"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="13" language="java" name="com.fin.festa.service.NewsService" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/NewsService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="708" y="351"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="14" language="java" name="com.fin.festa.service.UserService" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/UserService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="701" y="558"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="15" language="java" name="com.fin.festa.service.CampService" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/CampService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="704" y="665"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="16" language="java" name="com.fin.festa.service.FeedService" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/FeedService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="705" y="-15"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="17" language="java" name="com.fin.festa.service.GroupService" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/GroupService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="710" y="243"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="18" language="java" name="com.fin.festa.service.IndexService" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/IndexService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="705" y="-111"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="19" language="java" name="com.fin.festa.service.AdminService" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/AdminService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="704" y="771"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="20" language="java" name="com.fin.festa.service.MemberService" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/MemberService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="712" y="107"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <package id="21" language="java" name="com.fin.festa.model" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1075" width="536" x="1356" y="-242"/>    
+    <display autosize="false" stereotype="false" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="22" language="java" name="com.fin.festa.service.AdminServiceImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/AdminServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1004" y="769"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="com.fin.festa.service.SearchServiceImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/SearchServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1007" y="438"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="com.fin.festa.service.FeedServiceImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/FeedServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1012" y="-9"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="com.fin.festa.service.CampServiceImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/CampServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1004" y="661"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="com.fin.festa.service.IndexServiceImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/IndexServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="993" y="-110"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="com.fin.festa.service.GroupServiceImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/GroupServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1013" y="240"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="com.fin.festa.service.MemberServiceImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/MemberServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1013" y="97"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="com.fin.festa.service.NewsServiceImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/NewsServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="997" y="346"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="com.fin.festa.service.UserServiceImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/service/UserServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1015" y="549"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="com.fin.festa.model.UserDaoImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/UserDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1495" y="547"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="com.fin.festa.model.AdminDaoImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/AdminDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1497" y="770"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="com.fin.festa.model.CampDaoImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/CampDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1503" y="660"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="com.fin.festa.model.FeedDaoImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/FeedDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1509" y="-8"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="com.fin.festa.model.GroupDaoImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/GroupDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1500" y="239"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="com.fin.festa.model.IndexDaoImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/IndexDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1511" y="-110"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="com.fin.festa.model.NewsDaoImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/NewsDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1502" y="343"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="com.fin.festa.model.SearchDaoImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/SearchDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1496" y="439"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="com.fin.festa.model.MemberDaoImpl" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/MemberDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1502" y="95"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="40" language="java" name="com.fin.festa.model.GroupDao" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/GroupDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1793" y="237"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="41" language="java" name="com.fin.festa.model.MemberDao" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/MemberDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1800" y="93"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="42" language="java" name="com.fin.festa.model.FeedDao" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/FeedDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1788" y="-9"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="43" language="java" name="com.fin.festa.model.AdminDao" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/AdminDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1799" y="766"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="44" language="java" name="com.fin.festa.model.IndexDao" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/IndexDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1791" y="-112"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="45" language="java" name="com.fin.festa.model.SearchDao" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/SearchDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1792" y="436"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="46" language="java" name="com.fin.festa.model.NewsDao" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/NewsDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1791" y="338"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="47" language="java" name="com.fin.festa.model.UserDao" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/UserDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1782" y="544"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="48" language="java" name="com.fin.festa.model.CampDao" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/CampDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1782" y="655"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <package id="49" language="java" name="com.fin.festa.model.entity" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1411" width="1173" x="-1186" y="-235"/>    
+    <display autosize="false" stereotype="false" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="50" language="java" name="com.fin.festa.model.entity.AgeCountVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/AgeCountVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-925" y="1091"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="com.fin.festa.model.entity.AllCountVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/AllCountVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-783" y="1084"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="com.fin.festa.model.entity.CampReviewVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/CampReviewVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="174" width="146" x="-885" y="830"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="53" language="java" name="com.fin.festa.model.entity.CampVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/CampVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="499" width="188" x="-1145" y="-155"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="54" language="java" name="com.fin.festa.model.entity.FeedVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/FeedVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="142" width="187" x="-1144" y="379"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="55" language="java" name="com.fin.festa.model.entity.SocialGoogle" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/SocialGoogle.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-130" y="1069"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="com.fin.festa.model.entity.MyBookMarkVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/MyBookMarkVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="67" width="133" x="-497" y="1035"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="com.fin.festa.model.entity.GroupPostVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/GroupPostVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="281" width="154" x="-287" y="-152"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="com.fin.festa.model.entity.MyAdminVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/MyAdminVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="174" width="151" x="-660" y="561"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="59" language="java" name="com.fin.festa.model.entity.GroupNoticeVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/GroupNoticeVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="192" width="157" x="-481" y="560"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="60" language="java" name="com.fin.festa.model.entity.JoinGroupVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/JoinGroupVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="139" width="230" x="-1144" y="830"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="61" language="java" name="com.fin.festa.model.entity.GroupVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/GroupVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="301" width="192" x="-516" y="218"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="62" language="java" name="com.fin.festa.model.entity.GroupCommentVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/GroupCommentVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="192" width="153" x="-294" y="560"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="63" language="java" name="com.fin.festa.model.entity.LoginVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/LoginVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-281" y="1086"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="64" language="java" name="com.fin.festa.model.entity.GroupNoticeCommentVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/GroupNoticeCommentVo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="192" width="199" x="-884" y="562"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="65" language="java" name="com.fin.festa.model.entity.MyCommentVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/MyCommentVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="192" width="154" x="-924" y="327"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="66" language="java" name="com.fin.festa.model.entity.MyFollowingVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/MyFollowingVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="134" x="-421" y="834"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="67" language="java" name="com.fin.festa.model.entity.MyGoodVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/MyGoodVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="100" width="135" x="-1145" y="1032"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="68" language="java" name="com.fin.festa.model.entity.MyPostVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/MyPostVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="263" width="173" x="-745" y="259"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="69" language="java" name="com.fin.festa.model.entity.MyFollowerVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/MyFollowerVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="104" width="140" x="-261" y="834"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="70" language="java" name="com.fin.festa.model.entity.ProfileVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/ProfileVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="319" width="203" x="-516" y="-153"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="71" language="java" name="com.fin.festa.model.entity.PageSearchVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/PageSearchVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-861" y="60"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="72" language="java" name="com.fin.festa.model.entity.PreferableLocationVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/PreferableLocationVo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-609" y="1076"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="73" language="java" name="com.fin.festa.model.entity.MyVentureVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/MyVentureVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="229" width="233" x="-1145" y="560"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="74" language="java" name="com.fin.festa.model.entity.ReportListVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/ReportListVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="373" width="219" x="-766" y="-154"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="75" language="java" name="com.fin.festa.model.entity.WeekVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/WeekVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-655" y="910"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="76" language="java" name="com.fin.festa.model.entity.UpdateWaitVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/UpdateWaitVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="265" width="225" x="-295" y="253"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="77" language="java" name="com.fin.festa.model.entity.WeekCountVo" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/model/entity/WeekCountVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-508" y="895"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <package id="78" language="java" name="com.fin.festa.util" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/util" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="324" width="1095" x="538" y="923"/>    
+    <display autosize="false" stereotype="false" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="79" language="java" name="com.fin.festa.util.AgeCalculate" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/util/AgeCalculate.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="675" y="992"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="80" language="java" name="com.fin.festa.util.StopUser" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/util/StopUser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="825" y="992"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="81" language="java" name="com.fin.festa.util.DateCalculate" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/util/DateCalculate.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1000" y="1103"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="82" language="java" name="com.fin.festa.util.EchoHandler" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/util/EchoHandler.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1434" y="1038"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="83" language="java" name="com.fin.festa.util.UploadPhoto" project="festa" 
+    file="/festa/src/main/java/com/fin/festa/util/UploadPhoto.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1181" y="1001"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="84">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <realization id="85">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="18"/>  
+  </realization>  
+  <dependency id="86">    
+    <bendpoint x="1005" y="900"/>    
+    <bendpoint x="676" y="901"/>    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="79"/>  
+  </dependency>  
+  <realization id="87">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="41"/>  
+  </realization>  
+  <association id="88">    
+    <bendpoint x="1215" y="345"/>    
+    <bendpoint x="1215" y="-110"/>    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="89" name="indexDao">        
+        <position height="0" width="0" x="85" y="6"/>      
+      </attribute>      
+      <multiplicity id="90" minimum="0" maximum="1">        
+        <position height="0" width="0" x="85" y="6"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <realization id="91">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="46"/>  
+  </realization>  
+  <realization id="92">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <realization id="93">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <realization id="94">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="20"/>  
+  </realization>  
+  <dependency id="95">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="81"/>  
+  </dependency>  
+  <association id="96">    
+    <bendpoint x="1215" y="240"/>    
+    <bendpoint x="1215" y="-110"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="97" name="indexDao">        
+        <position height="0" width="0" x="85" y="6"/>      
+      </attribute>      
+      <multiplicity id="98" minimum="0" maximum="1">        
+        <position height="0" width="0" x="85" y="6"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="99">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="100" name="groupDao">        
+        <position height="0" width="0" x="-7" y="21"/>      
+      </attribute>      
+      <multiplicity id="101" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-7" y="21"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <realization id="102">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="42"/>  
+  </realization>  
+  <realization id="103">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <association id="104">    
+    <bendpoint x="1215" y="240"/>    
+    <bendpoint x="1215" y="96"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="105" name="memberDao">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="106" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <dependency id="107">    
+    <bendpoint x="1181" y="549"/>    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <association id="108">    
+    <bendpoint x="1215" y="548"/>    
+    <bendpoint x="1215" y="660"/>    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="109" name="campDao">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="110" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="111">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="112" name="userDao">        
+        <position height="0" width="0" x="-1" y="30"/>      
+      </attribute>      
+      <multiplicity id="113" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-1" y="30"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="114">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="115" name="newsDao">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="116" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <dependency id="117">    
+    <bendpoint x="1181" y="437"/>    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <association id="118">    
+    <bendpoint x="1214" y="549"/>    
+    <bendpoint x="1215" y="95"/>    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="119" name="memberDao">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="120" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="121">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="122" name="campService">        
+        <position height="20" width="82" x="481" y="596"/>      
+      </attribute>      
+      <multiplicity id="123" minimum="0" maximum="1">        
+        <position height="18" width="27" x="568" y="674"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="124">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="125" name="feedDao">        
+        <position height="0" width="0" x="-2" y="5"/>      
+      </attribute>      
+      <multiplicity id="126" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-2" y="5"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="127">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="128" name="memberDao">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="129" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="130">    
+    <bendpoint x="1215" y="547"/>    
+    <bendpoint x="1215" y="-110"/>    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="131" name="indexDao">        
+        <position height="0" width="0" x="85" y="6"/>      
+      </attribute>      
+      <multiplicity id="132" minimum="0" maximum="1">        
+        <position height="0" width="0" x="85" y="6"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="133">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="134" name="userSerivce">        
+        <position height="20" width="75" x="482" y="530"/>      
+      </attribute>      
+      <multiplicity id="135" minimum="0" maximum="1">        
+        <position height="18" width="27" x="566" y="531"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="136">    
+    <bendpoint x="516" y="559"/>    
+    <bendpoint x="516" y="665"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="137" name="campService">        
+        <position height="20" width="82" x="476" y="671"/>      
+      </attribute>      
+      <multiplicity id="138" minimum="0" maximum="1">        
+        <position height="18" width="27" x="571" y="602"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="139">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="140" name="indexService">        
+        <position height="20" width="81" x="481" y="-142"/>      
+      </attribute>      
+      <multiplicity id="141" minimum="0" maximum="1">        
+        <position height="18" width="27" x="563" y="-40"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <realization id="142">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <dependency id="143">    
+    <bendpoint x="1004" y="900"/>    
+    <bendpoint x="823" y="899"/>    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="80"/>  
+  </dependency>  
+  <association id="144">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="145" name="searchService">        
+        <position height="20" width="89" x="482" y="415"/>      
+      </attribute>      
+      <multiplicity id="146" minimum="0" maximum="1">        
+        <position height="18" width="27" x="581" y="419"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <dependency id="147">    
+    <bendpoint x="1432" y="890"/>    
+    <bendpoint x="1286" y="890"/>    
+    <bendpoint x="1288" y="238"/>    
+    <end type="SOURCE" refId="82"/>    
+    <end type="TARGET" refId="35"/>  
+  </dependency>  
+  <association id="148">    
+    <bendpoint x="1215" y="-9"/>    
+    <bendpoint x="1215" y="96"/>    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="149" name="memberDao">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="150" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="151">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="152" name="adminDao">        
+        <position height="0" width="0" x="-7" y="6"/>      
+      </attribute>      
+      <multiplicity id="153" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-7" y="6"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="154">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="155" name="memberService">        
+        <position height="20" width="97" x="467" y="83"/>      
+      </attribute>      
+      <multiplicity id="156" minimum="0" maximum="1">        
+        <position height="18" width="27" x="572" y="85"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <realization id="157">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <association id="158">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="159" name="indexDao">        
+        <position height="0" width="0" x="85" y="6"/>      
+      </attribute>      
+      <multiplicity id="160" minimum="0" maximum="1">        
+        <position height="0" width="0" x="85" y="6"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <realization id="161">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="44"/>  
+  </realization>  
+  <association id="162">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="163" name="groupService">        
+        <position height="20" width="82" x="474" y="218"/>      
+      </attribute>      
+      <multiplicity id="164" minimum="0" maximum="1">        
+        <position height="18" width="27" x="567" y="221"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <realization id="165">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="17"/>  
+  </realization>  
+  <dependency id="166">    
+    <bendpoint x="1182" y="661"/>    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <association id="167">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="168" name="campDao">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="169" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <realization id="170">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="48"/>  
+  </realization>  
+  <association id="171">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="172" name="searchDao">        
+        <position height="0" width="0" x="-2" y="21"/>      
+      </attribute>      
+      <multiplicity id="173" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-2" y="21"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="174">    
+    <bendpoint x="1215" y="-9"/>    
+    <bendpoint x="1215" y="-110"/>    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="175" name="indexDao">        
+        <position height="0" width="0" x="85" y="6"/>      
+      </attribute>      
+      <multiplicity id="176" minimum="0" maximum="1">        
+        <position height="0" width="0" x="85" y="6"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <dependency id="177">    
+    <bendpoint x="1181" y="346"/>    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <association id="178">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="179" name="newsService">        
+        <position height="20" width="80" x="479" y="322"/>      
+      </attribute>      
+      <multiplicity id="180" minimum="0" maximum="1">        
+        <position height="18" width="27" x="572" y="328"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <realization id="181">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="45"/>  
+  </realization>  
+  <dependency id="182">    
+    <bendpoint x="1181" y="240"/>    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <association id="183">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="184" name="feedService">        
+        <position height="20" width="74" x="481" y="-42"/>      
+      </attribute>      
+      <multiplicity id="185" minimum="0" maximum="1">        
+        <position height="18" width="27" x="573" y="-142"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <realization id="186">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="16"/>  
+  </realization>  
+  <realization id="187">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="47"/>  
+  </realization>  
+  <realization id="188">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="43"/>  
+  </realization>  
+  <association id="189">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="190" name="adminService">        
+        <position height="20" width="85" x="473" y="782"/>      
+      </attribute>      
+      <multiplicity id="191" minimum="0" maximum="1">        
+        <position height="18" width="27" x="569" y="786"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <dependency id="192">    
+    <bendpoint x="1182" y="-8"/>    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="false" package="false" protected="false" private="false" static="true"/>  
+  </classifier-display>  
+  <association-display labels="false" multiplicity="false"/>
+</class-diagram>

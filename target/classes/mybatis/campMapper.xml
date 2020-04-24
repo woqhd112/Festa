@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="camp">
+	
+	<!-- 캠핑장 정보 조인 시에 참조되는 데이터 -->
+	<resultMap type="CampVo" id="camp">
+		<result column="canum" property="canum"/>
+		<result column="caname" property="caname"/>
+		<result column="cagood" property="cagood"/>
+		<result column="mvnum1" property="mvnum"/>
+		<result column="caphoto" property="caphoto"/>
+		<result column="caaddr" property="caaddr"/>
+		<result column="caintro" property="caintro"/>
+		<result column="caguide1" property="caguide1"/>
+		<result column="caguide2" property="caguide2"/>
+		<result column="caguide3" property="caguide3"/>
+		<result column="caguide4" property="caguide4"/>
+		<result column="caguide5" property="caguide5"/>
+		<result column="caguide6" property="caguide6"/>
+		<result column="caguide7" property="caguide7"/>
+		<result column="cadate" property="cadate"/>
+		<result column="cadateup" property="cadateup"/>
+		<result column="caavg" property="caavg"/>
+		<result column="caintroone" property="caintroone"/>
+		<result column="caaddrsel" property="caaddrsel"/>
+		<result column="caaddrsuv" property="caaddrsuv"/>
+		<result column="httitle1" property="httitle1"/>
+		<result column="httitle2" property="httitle2"/>
+		<result column="httitle3" property="httitle3"/>
+		<association property="profile" resultMap="profile"/>
+	</resultMap>
+	<resultMap type="ProfileVo" id="profile">
+		<result column="pronum" property="pronum"/>
+		<result column="proid" property="proid"/>
+		<result column="proname" property="proname"/>
+	</resultMap>
+	
+	<!-- 내 북마크목록 조인 시에 참조되는데이터 -->
+	<resultMap type="MyBookMarkVo" id="mybookmark">
+		<id column="dummy_column_for_unique"/>
+		<result column="pronum16" property="pronum"/>
+		<association property="camp" resultMap="camp1"/>
+	</resultMap>
+	<resultMap type="CampVo" id="camp1">
+		<result column="canum" property="canum"/>
+		<result column="caname" property="caname"/>
+		<result column="cagood" property="cagood"/>
+		<result column="mvnum1" property="mvnum"/>
+		<result column="caphoto" property="caphoto"/>
+		<result column="caaddr" property="caaddr"/>
+		<result column="caintro" property="caintro"/>
+		<result column="caguide1" property="caguide1"/>
+		<result column="caguide2" property="caguide2"/>
+		<result column="caguide3" property="caguide3"/>
+		<result column="caguide4" property="caguide4"/>
+		<result column="caguide5" property="caguide5"/>
+		<result column="caguide6" property="caguide6"/>
+		<result column="caguide7" property="caguide7"/>
+		<result column="cadate" property="cadate"/>
+		<result column="cadateup" property="cadateup"/>
+		<result column="caavg" property="caavg"/>
+		<result column="caintroone" property="caintroone"/>
+		<result column="caaddrsel" property="caaddrsel"/>
+		<result column="caaddrsuv" property="caaddrsuv"/>
+	</resultMap>
+	
+	<!-- 한줄평 출력 조인시에 참조되는 데이터 -->
+	<resultMap type="CampReviewVo" id="campreview">
+		<result column="crrn" property="crrn"/>
+		<result column="crnum" property="crnum"/>
+		<result column="crauthor" property="crauthor"/>
+		<result column="crcontent" property="crcontent"/>
+		<result column="crdate" property="crdate"/>
+		<result column="crgood" property="crgood"/>
+		<result column="canum1" property="canum"/>
+		<result column="pronum5" property="pronum"/>
+		<association property="profile" resultMap="profile1"/>
+	</resultMap>
+	<resultMap type="ProfileVo" id="profile1">
+		<result column="prophoto" property="prophoto"/>
+	</resultMap>
+	
+	<!-- 내 좋아요목록 -->
+	<resultMap type="MyGoodVo" id="good">
+		<result column="pronum6" property="pronum"/>
+		<result column="canum3" property="canum"/>
+		<result column="gpnum3" property="gpnum"/>
+		<result column="mpnum2" property="mpnum"/>
+	</resultMap>
+	
+	
+	
+	<!-- 캠핑정보 화면출력 start -->
+	
+	<!-- 신규캠핑장 목록 출력 -->
+	<select id="newCampSelectAll" resultMap="camp">
+		select * from (select *,@rownum:=@rownum+1 as carn from (select a.* from camp a,(SELECT @ROWNUM:=0) r where canum!=1 order by cadate desc) c) d where carn<![CDATA[ >= ]]>1 and carn<![CDATA[ <= ]]>10
+	</select>
+	
+	<!-- 전국캠핑장 목록 출력 -->
+	<select id="allLocationCamp" resultMap="camp">
+		select a.* from camp a where canum!=1 order by cagood desc
+	</select>
+	
+	<!-- 해당지역 캠핑장 목록 출력 -->
+	<select id="locationCamp" parameterType="CampVo" resultMap="camp">
+		select a.* from camp a where canum!=1 and caaddrsel like concat('%',#{caaddrsel},'%') order by cagood desc
+	</select>
+	
+	<!-- 캠핑정보 화면출력 end -->
+	<!-- 캠핑장상세 공식그룹 체크 start -->
+
+	<!-- 캠핑장 공식그룹 체크 -->
+	<select id="ventureGroupCheck" parameterType="CampVo" resultType="int">
+		select count(*) from myventure a inner join group1 b on a.pronum2=b.pronum1 inner join camp c on a.mvnum=c.mvnum1 where grventure=2 and canum=#{canum}
+	</select>
+	
+	<!-- 캠핑장 공식그룹 존재시 그룹정보담기 -->
+	<select id="campVentureGroup" parameterType="CampVo" resultType="GroupVo">
+		select b.* from myventure a inner join group1 b on a.pronum2=b.pronum1 inner join camp c on a.mvnum=c.mvnum1 where c.canum=#{canum}
+	</select>
+	
+	<!-- 캠핑장상세 공식그룹 체크 end -->
+	<!-- 캠핑장상세 화면출력 start -->
+		
+	<!-- 캠핑장 정보출력 -->
+	<select id="campInfoSelectOne" parameterType="CampVo" resultMap="camp">
+		select a.*,d.pronum,d.proid,d.proname from camp a inner join myventure c on a.mvnum1=c.mvnum inner join profile d on c.pronum2=d.pronum where canum!=1 and canum=#{canum}
+	</select>
+	
+	<!-- 해당캠핑장 한줄평출력 -->
+	<select id="campReview" parameterType="CampVo" resultMap="campreview">
+		<!-- select a.*,b.prophoto from campreview a inner join profile b on a.pronum5=b.pronum where canum1=#{canum} order by crdate desc -->
+		select * from (select @rownum:=@rownum+1 as crrn,a.*,b.prophoto from campreview a inner join profile b on a.pronum5=b.pronum,(select @rownum:=0) r where canum1=#{canum} order by crdate desc) c where crrn<![CDATA[ >= ]]>#{pageSearch.startnum} and crrn<![CDATA[ <= ]]>#{pageSearch.endnum}
+	</select>
+	
+	<!-- 한줄평 총 갯수출력 -->
+	<select id="campReviewCount" parameterType="CampVo" resultType="int">
+		select count(*) from campreview where canum1=#{canum}
+	</select>
+	
+	<!-- 해당캠핑장과 같은 지역의 캠핑장목록 출력 -->
+	<select id="sameLocationCamp" parameterType="CampVo" resultMap="camp">
+		select a.* from camp a where canum!=1 and canum!=#{canum} and caaddrsel like concat('%',#{caaddrsel},'%') order by cagood desc
+	</select>
+	<!-- 캠핑장상세 화면출력 end -->
+	<!-- 캠핑장한줄평 등록,삭제 start -->
+	
+	<!-- 한줄평 등록 -->
+	<insert id="campReviewInsert" parameterType="CampReviewVo">
+		insert into campreview (crauthor,crcontent,crdate,crgood,canum1,pronum5) values (#{crauthor},#{crcontent},now(),#{crgood},#{canum},#{pronum})
+	</insert>
+	
+	<!-- 한줄평 등록시 캠핑장 별점 업데이트 -->
+	<update id="campAvgUpdate" parameterType="CampReviewVo">
+		update camp set caavg=(select avg(crgood) from campreview where canum1=#{canum}) where canum=#{canum}
+	</update>
+	
+	<!-- 한줄평 삭제 -->
+	<delete id="campReviewDelete" parameterType="CampReviewVo">
+		delete from campreview where crnum=#{crnum}
+	</delete>
+	
+	<!-- 캠핑장한줄평 등록,삭제 end -->
+	<!-- 캠핑장 좋아요등록,해제 start -->
+
+	<!-- 캠핑장 좋아요등록 -->
+	<insert id="campLikeInsert" parameterType="MyGoodVo">
+		insert into mygood values (#{pronum},#{canum},1,1)
+	</insert>
+	
+	<!-- 캠핑장 좋아요해제 -->
+	<delete id="campLikeDelete" parameterType="MyGoodVo">
+		delete from mygood where pronum6=#{pronum} and canum3=#{canum}
+	</delete>
+	
+	<!-- 캠핑장 좋아요갯수 -->
+	<update id="campLikeUpdate" parameterType="CampVo">
+		update camp set cagood=(select count(*) from mygood where canum3=#{canum}) where canum=#{canum}
+	</update>
+	
+	<!-- 내 좋아요목록 갱신 -->
+	<select id="myGoodRenewal" parameterType="MyGoodVo" resultMap="good">
+		select * from mygood where pronum6=#{pronum}
+	</select>
+	
+	<!-- 캠핑장 좋아요등록,해제 end -->
+	<!-- 캠핑장 신고등록 start -->
+	
+	<!-- 캠핑장 신고등록 -->
+	<insert id="campReport" parameterType="ReportListVo">
+		insert into reportlist (rlcategory,rlreport,rlreporter,reporterid,rltarget,
+		targetid,rldate,pronum_sync,pronum14,grnum5,gpnum4,canum4,mpnum3,gnnum1,rlstatus,rlphoto)
+		 values ('캠핑장',#{rlreport},#{rlreporter},#{reporterid},#{rltarget},#{targetid},now(),#{pronum_sync},#{pronum},1,1,#{canum},1,1,1,#{rlphoto})
+	</insert>
+		
+	<!-- 캠핑장주인 신고당한횟수 +1 -->
+	<update id="campReportCountUpdate" parameterType="ReportListVo">
+		update myadmin set reporttotal=reporttotal+1 where pronum7=#{pronum_sync}
+	</update>
+	
+	<!-- 캠핑장 신고등록 end -->
+	<!-- 캠핑장 북마크등록,해제 start -->
+	
+	<!-- 캠핑장 북마크등록 -->
+	<insert id="campBookMarkInsert" parameterType="MyBookMarkVo">
+		insert into mybookmark values (#{pronum},#{canum})
+	</insert>
+	
+	<!-- 캠핑장 북마크해제 -->
+	<delete id="campBookMarkDelete" parameterType="MyBookMarkVo">
+		delete from mybookmark where pronum16=#{pronum} and canum5=#{canum}
+	</delete>
+	
+	<!-- 내 북마크목록 갱신 -->
+	<select id="mybookRenewal" parameterType="MyBookMarkVo" resultMap="mybookmark">
+		select a.pronum16, b.* from mybookmark a inner join camp b on a.canum5=b.canum where pronum16=#{pronum}
+	</select>
+
+	<!-- 캠핑장 북마크등록,해제 end -->
+
+</mapper>

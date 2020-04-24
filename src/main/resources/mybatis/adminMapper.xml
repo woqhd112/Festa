@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+
+	<!-- 그룹관리정보 조인 시에 참조되는 데이터 -->
+	<resultMap type="GroupVo" id="group">
+		<result column="grrn" property="grrn"/>
+		<result column="grnum" property="grnum"/>
+		<result column="pronum1" property="pronum"/>
+		<result column="grname" property="grname"/>
+		<result column="grtotal" property="grtotal"/>
+		<result column="grdate" property="grdate"/>
+		<result column="grintro" property="grintro"/>
+		<result column="grphoto" property="grphoto"/>
+		<result column="grventure" property="grventure"/>
+		<result column="httitle1" property="httitle1"/>
+		<result column="httitle2" property="httitle2"/>
+		<result column="httitle3" property="httitle3"/>
+		<association property="profile" resultMap="profile"/>	
+	</resultMap>
+	<resultMap type="ProfileVo" id="profile">
+		<result column="proname" property="proname"/>
+	</resultMap>
+	
+	<!-- 회원관리정보 조인 시에 참조되는 데이터 -->
+	<resultMap type="ProfileVo" id="profile2">
+		<result column="prorn" property="prorn"/>
+		<result column="pronum" property="pronum"/>
+		<result column="proname" property="proname"/>
+		<result column="proid" property="proid"/>
+		<result column="proaddr" property="proaddr"/>
+		<result column="projob" property="projob"/>
+		<result column="projender" property="projender"/>
+		<result column="proidnum" property="proidnum"/>
+		<association property="myAdmin" resultMap="admin"/>
+	</resultMap>
+	<resultMap type="MyAdminVo" id="admin">
+		<result column="stoptotal" property="stoptotal"/>
+		<result column="reporttotal" property="reporttotal"/>
+		<result column="stoplv" property="stoplv"/>
+	</resultMap>
+	
+	<!-- 회원상세페이지 조인 시에 참조되는 데이터 -->
+	<resultMap type="ProfileVo" id="profile3">
+		<result column="prorn" property="prorn"/>
+		<result column="pronum" property="pronum"/>
+		<result column="proname" property="proname"/>
+		<result column="proaddr" property="proaddr"/>
+		<result column="prointro" property="prointro"/>
+		<result column="projender" property="projender"/>
+		<result column="prophoto" property="prophoto"/>
+		<association property="myAdmin" resultMap="admin2"/>
+	</resultMap>
+	<resultMap type="MyAdminVo" id="admin2">
+		<result column="stoptotal" property="stoptotal"/>
+		<result column="reporttotal" property="reporttotal"/>
+	</resultMap>
+
+	<!-- 회원상세페이지피드 조인 시에 참조되는 데이터 -->
+	<resultMap type="MyPostVo" id="post">
+		<result column="mpnum" property="mpnum"/>
+		<result column="mpauthor" property="mpauthor"/>
+		<result column="mpphoto" property="mpphoto"/>
+		<result column="mpcontent" property="mpcontent"/>
+		<result column="mpdate" property="mpdate"/>
+		<result column="mpgood" property="mpgood"/>
+		<result column="pronum12" property="pronum"/>
+		<result column="mptotal" property="mptotal"/>
+		<result column="httitle1" property="httitle1"/>
+		<result column="httitle2" property="httitle2"/>
+		<result column="httitle3" property="httitle3"/>
+		<association property="profile" resultMap="profile4"/>
+	</resultMap>
+	
+	<!-- 그룹피드 조인 시에 참조되는 데이터 -->
+	<resultMap type="GroupPostVo" id="grouppost">
+		<result column="gpnum" property="gpnum"/>
+		<result column="gpauthor" property="gpauthor"/>
+		<result column="gpcontent" property="gpcontent"/>
+		<result column="gpdate" property="gpdate"/>
+		<result column="gpgood" property="gpgood"/>
+		<result column="grnum1" property="grnum"/>
+		<result column="pronum3" property="pronum"/>
+		<result column="gpphoto" property="gpphoto"/>
+		<result column="gptotal" property="gptotal"/>
+		<result column="httitle1" property="httitle1"/>
+		<result column="httitle2" property="httitle2"/>
+		<result column="httitle3" property="httitle3"/>
+		<association property="group" resultMap="group1"/>
+		<association property="profile" resultMap="profile4"/>
+	</resultMap>
+	
+	<!-- 공지사항디테일 조인시에 참조되는 데이터 -->
+	<resultMap type="GroupNoticeVo" id="groupnotice1">
+		<result column="gnnum" property="gnnum"/>
+		<result column="gnauthor" property="gnauthor"/>
+		<result column="gnphoto" property="gnphoto"/>
+		<result column="gncontent" property="gncontent"/>
+		<result column="gndate" property="gndate"/>
+		<result column="grnum6" property="grnum"/>
+		<result column="gntotal" property="gntotal"/>
+		<association property="profile" resultMap="profile4"/>
+		<association property="group" resultMap="group1"/>
+	</resultMap>
+	<resultMap type="GroupVo" id="group1">
+		<result column="grname" property="grname"/>
+	</resultMap>
+	<!-- 공지사항댓글 조인시에 참조되는 데이터 -->
+	<resultMap type="GroupNoticeCommentVo" id="groupnoticecmmt">
+		<result column="gncnum" property="gncnum"/>
+		<result column="gnccontent" property="gnccontent"/>
+		<result column="gncauthor" property="gncauthor"/>
+		<result column="gncdate" property="gncdate"/>
+		<result column="gnnum2" property="gnnum"/>
+		<result column="pronum15" property="pronum"/>
+		<result column="grnum8" property="grnum"/>
+		<association property="profile" resultMap="profile4"/>
+	</resultMap>
+	<!-- 그룹피드댓글 조인시에 참조되는 데이터 -->
+	<resultMap type="GroupCommentVo" id="groupcmmt">
+		<result column="gcnum" property="gcnum"/>
+		<result column="gccontent" property="gccontent"/>
+		<result column="gcauthor" property="gcauthor"/>
+		<result column="gcdate" property="gcdate"/>
+		<result column="gpnum1" property="gpnum"/>
+		<result column="pronum4" property="pronum"/>
+		<result column="grnum7" property="grnum"/>
+		<association property="profile" resultMap="profile4"/>
+	</resultMap>
+	<!-- 신고관리 내피드 댓글 조인시에 참조되는 데이터 -->
+	<resultMap type="MyCommentVo" id="cmmt">
+		<id column="mcnum" property="mcnum"/>
+		<result column="mccontent" property="mccontent"/>
+		<result column="mcauthor" property="mcauthor"/>
+		<result column="mcdate" property="mcdate"/>
+		<result column="mpnum1" property="mpnum"/>
+		<result column="pronum13" property="pronum"/>
+		<result column="pronum_sync" property="pronum_sync"/>
+		<association property="profile" resultMap="profile4"/>
+	</resultMap>
+	<!-- 신고관리 캠핑장한줄평 조인시에 참조되는 데이터 -->
+	<resultMap type="CampReviewVo" id="campreview">
+		<result column="crrn" property="crrn"/>
+		<result column="crnum" property="crnum"/>
+		<result column="crauthor" property="crauthor"/>
+		<result column="crcontent" property="crcontent"/>
+		<result column="crdate" property="crdate"/>
+		<result column="crgood" property="crgood"/>
+		<result column="canum1" property="canum"/>
+		<result column="pronum5" property="pronum"/>
+		<association property="profile" resultMap="profile4"/>
+	</resultMap>
+	<resultMap type="ProfileVo" id="profile4">
+		<id column="dummy_column_for_unique"/>
+		<result column="prophoto" property="prophoto"/>
+		<result column="pronum" property="pronum"/>
+		<result column="proname" property="proname"/>
+	</resultMap>
+	
+	<!-- 캠핑관리정보 조인 시에 참조되는 데이터 -->
+	<resultMap type="CampVo" id="camp">
+		<result column="carn" property="carn"/>
+		<result column="canum" property="canum"/>
+		<result column="mvnum1" property="mvnum"/>
+		<result column="caaddrsel" property="caaddrsel"/>
+		<result column="caphoto" property="caphoto"/>
+		<result column="caname" property="caname"/>
+		<result column="cadate" property="cadate"/>
+		<association property="myVenture" resultMap="venture"/>
+	</resultMap>
+	<resultMap type="MyVentureVo" id="venture">
+		<result column="proname" property="proname"/>
+	</resultMap>
+	
+	<!-- 가입유저목록 조인 시에 참조되는 데이터 -->
+	<resultMap type="JoinGroupVo" id="joinuser">
+		<result column="jgnum" property="jgnum"/>
+		<result column="grnum3" property="grnum"/>
+		<result column="grname" property="grname"/>
+		<association property="profile" resultMap="profile5"/>
+	</resultMap>
+	<!-- 내팔로워목록 조인 시에 참조되는 데이터 -->
+	<resultMap type="MyFollowerVo" id="follower">
+		<result column="mfrnum" property="mfrnum"/>
+		<association property="profile" resultMap="profile5"/>
+	</resultMap>
+	<!-- 내팔로잉목록 조인 시에 참조되는 데이터 -->
+	<resultMap type="MyFollowingVo" id="following">
+		<result column="mfgnum" property="mfgnum"/>
+		<association property="profile" resultMap="profile5"/>
+	</resultMap>
+	<resultMap type="ProfileVo" id="profile5">
+		<result column="pronum" property="pronum"/>
+		<result column="proname" property="proname"/>
+		<result column="proid" property="proid"/>
+		<result column="propw" property="propw"/>
+		<result column="proaddr" property="proaddr"/>
+		<result column="prointro" property="prointro"/>
+		<result column="projob" property="projob"/>
+		<result column="projender" property="projender"/>
+		<result column="prophoto" property="prophoto"/>
+		<result column="proidnum" property="proidnum"/>
+		<result column="prodate" property="prodate"/>
+	</resultMap>
+	
+	<!-- 사업자목록 조인 시에 참조되는 데이터 -->
+	<resultMap type="MyVentureVo" id="myventure">
+		<result column="mvrn" property="mvrn"/>
+		<result column="mvnum" property="mvnum"/>
+		<result column="mvnumber" property="mvnumber"/>
+		<result column="mvname" property="mvname"/>
+		<result column="mvaddr" property="mvaddr"/>
+		<result column="proname" property="proname"/>
+		<result column="mvdate" property="mvdate"/>
+		<result column="pronum2" property="pronum"/>
+		<result column="mvphoto" property="mvphoto"/>
+		<association property="camp" resultMap="camp1"/>
+	</resultMap>
+	<resultMap type="CampVo" id="camp1">
+		<result column="canum" property="canum"/>
+	</resultMap>
+	
+	<resultMap type="UpdateWaitVo" id="update">
+		<result column="uwrn" property="uwrn"/>
+		<result column="pronum9" property="pronum"/>
+		<result column="mvnumber" property="mvnumber"/>
+		<result column="mvname" property="mvname"/>
+		<result column="mvaddr" property="mvaddr"/>
+		<result column="proname" property="proname"/>
+		<result column="uwdate" property="uwdate"/>
+		<result column="uwdate" property="uwdate"/>
+		<result column="mvphoto" property="mvphoto"/>
+		<result column="mvaddrsuv" property="mvaddrsuv"/>
+	</resultMap>
+	
+	<!-- 대시보드 화면출력 start -->
+	
+	<!-- 대시보드-전체사용자,그룹,사업자,캠핑장수 출력 -->
+	<select id="allCount" resultType="AllCountVo">
+		select (select count(*) from profile where pronum!=1) profile,(select count(*) from group1 where grnum!=1) group1,(select count(*) from myventure where mvnum!=1) myventure,(select count(*) from camp where canum!=1) camp from dual
+	</select>
+	
+	<!-- 대시보드-전체사용자,그룹,사업자,캠핑장수 출력 어제기준 -->
+	<select id="allCount_yesterday" parameterType="String" resultType="AllCountVo">
+		select (select count(*) from profile where pronum!=1 and prodate like concat('%',#{value},'%')) profile,(select count(*) from group1 where grnum!=1 and grdate like concat('%',#{value},'%')) group1,(select count(*) from myventure where mvnum!=1 and mvdate like concat('%',#{value},'%')) myventure,(select count(*) from camp where canum!=1 and cadate like concat('%',#{value},'%')) camp from dual
+	</select>
+	
+	<!-- 대시보드-저번주 신규이용자정보 출력 -->
+	<select id="lastWeekNewUser" parameterType="DateCalculate" resultType="WeekVo">
+		select (select count(*) from profile where prodate like concat('%',#{monday},'%')) monday,(select count(*) from profile where prodate like concat('%',#{tuesday},'%')) tuesday,(select count(*) from profile where prodate like concat('%',#{wednesday},'%')) wednesday,(select count(*) from profile where prodate like concat('%',#{thursday},'%')) thursday,(select count(*) from profile where prodate like concat('%',#{friday},'%')) friday,(select count(*) from profile where prodate like concat('%',#{saturday},'%')) saturday,(select count(*) from profile where prodate like concat('%',#{sunday},'%')) sunday from dual
+	</select>
+	
+	<!-- 대시보드-이번주 신규진행현황 출력 -->
+	<select id="weekNewUserCount" parameterType="DateCalculate" resultType="WeekCountVo">
+		select (select count(*) from profile where prodate<![CDATA[ >= ]]>#{startday} and prodate<![CDATA[ <= ]]>#{endday}) userCount,(select count(*) from group1 where grdate<![CDATA[ >= ]]>#{startday} and grdate<![CDATA[ <= ]]>#{endday}) groupCount,(select count(*) from updatewait where grnum4=1 and uwdate<![CDATA[ >= ]]>#{startday} and uwdate<![CDATA[ <= ]]>#{endday}) ventureCount,(select count(*) from camp where cadate<![CDATA[ >= ]]>#{startday} and cadate<![CDATA[ <= ]]>#{endday}) campCount,(select count(*) from reportlist where rldate<![CDATA[ >= ]]>#{startday} and rldate<![CDATA[ <= ]]>#{endday}) reportCount from dual
+	</select>
+	
+	<!-- 대시보드-전체회원의 생년월일 출력 -->
+	<select id="allUserCount" resultType="ProfileVo">
+		select proidnum from profile where pronum!=1
+	</select>
+	
+	<!-- 대시보드-선호관심지역 출력 -->
+	<select id="preferLocation" resultType="PreferableLocationVo">
+		select * from (select a.*,@rownum:=@rownum+1 as rn from (SELECT count(proaddr) as addrcnt,max(proaddr) as proaddr FROM profile GROUP BY proaddr HAVING COUNT(proaddr) <![CDATA[ > ]]> 1 order by count(*) desc) a,(SELECT @ROWNUM:=0) r) b where rn<![CDATA[ >= ]]>1 and rn<![CDATA[ <= ]]>5
+	</select>
+	
+	<!-- 대시보드 화면출력 end -->
+	<!-- 그룹관리 start -->
+	
+	<!-- 그룹원 수 페이지값 구하기 -->
+	<select id="adminGroupCount" parameterType="PageSearchVo" resultType="int">
+		select count(*) from group1 where grnum!=1 and grname like concat('%',#{keyword},'%')
+	</select>
+	
+	<!-- 그룹관리정보 출력 -->
+	<select id="adminGroupSelectAll" parameterType="PageSearchVo" resultMap="group">
+		select * from (select @rnum:=@rnum+1 as grrn,d.grrn2,d.grnum,d.pronum1,d.grname,d.grtotal,d.grdate,d.proname,d.grventure from (select * from (select @rownum:=@rownum+1 as grrn2,a.*,b.proname from group1 a inner join profile b on a.pronum1=b.pronum,(SELECT @ROWNUM:=0) r where grnum!=1 and grname like concat('%',#{keyword},'%') order by grname asc) c order by grrn2 desc) d,(SELECT @RNUM:=0) e order by grrn desc) f where grrn2<![CDATA[ >= ]]>#{startnum} and grrn2<![CDATA[ <= ]]>#{endnum}
+	</select>
+	
+	<!-- 그룹삭제 +@ -->
+	<delete id="groupDelete" parameterType="GroupVo">
+		delete from group1 where grnum in 
+		<foreach item="item" index="index" collection="groupList" open="(" separator="," close=")">
+      	 #{item.grnum}
+ 		</foreach>
+	</delete>
+	
+	<!-- 그룹상세정보 -->
+	<select id="groupInfo" parameterType="GroupVo" resultMap="group">
+		select a.*,b.proname from group1 a inner join profile b on a.pronum1=b.pronum where grnum=#{grnum}
+	</select>
+	
+	<!-- 그룹공지사항출력 -->
+	<select id="groupNoticeInfo" parameterType="GroupVo" resultType="GroupNoticeVo">
+		select gnnum,gncontent from groupnotice where grnum6=#{grnum} order by gndate desc
+	</select>
+	
+	<!-- 공지사항상세페이지 출력 -->
+	<select id="groupNoticeDetail" parameterType="GroupNoticeVo" resultMap="groupnotice1">
+		select d.*,(select count(*) from groupnoticecomment a where a.gnnum2=d.gnnum) as gntotal from (select a.*,c.pronum,c.prophoto,b.grname from groupnotice a inner join group1 b on a.grnum6=b.grnum inner join profile c on b.pronum1=c.pronum where gnnum=#{gnnum}) d
+	</select>
+	
+	<!-- 공지사항 삭제처리 -->
+	<delete id="groupNoticeDelete" parameterType="GroupNoticeVo">
+		delete from groupnotice where gnnum=#{gnnum}
+	</delete>
+	
+	<!-- 공지사항댓글출력 -->
+	<select id="groupNoticeCmmtInfo" parameterType="GroupNoticeVo" resultMap="groupnoticecmmt">
+		select a.*,b.prophoto,b.proname from groupnoticecomment a inner join profile b on a.pronum15=b.pronum where gnnum2=#{gnnum} order by gncnum desc
+	</select>
+	
+	<!-- 공지사항댓글 더보기 비동기 -->
+	<select id="adminGroupNoticeCmmt" parameterType="GroupNoticeVo" resultMap="groupnoticecmmt">
+		select * from (select @rownum:=@rownum+1 as prorn,a.*,b.prophoto,b.proname from groupnoticecomment a 
+		inner join profile b on a.pronum15=b.pronum,(select @rownum:=0) r where gnnum2=#{gnnum} order by gncdate desc) c 
+		where prorn<![CDATA[ >= ]]>#{pageSearch.startnum} and prorn<![CDATA[ <= ]]>#{pageSearch.endnum}+1
+	</select>
+	
+	<!-- 공지사항댓글 삭제처리 -->
+	<delete id="groupNoticeCmmtDelete" parameterType="GroupNoticeCommentVo">
+		delete from groupnoticecomment where gncnum=#{gncnum}
+	</delete>
+	
+	<!-- 그룹피드출력 -->
+	<select id="groupFeedInfoSelectAll" parameterType="GroupVo" resultMap="grouppost">
+		 select d.*,(select count(*) from groupcomment where gpnum1=d.gpnum) as gptotal from (select @rownum:=@rownum+1 as gprn,a.*,b.grname,c.prophoto,c.proname from grouppost a inner join group1 b on a.grnum1=b.grnum inner join profile c on a.pronum3=c.pronum,(select @rownum:=0) r where grnum1=#{grnum} order by gpdate desc) d where gprn<![CDATA[ >= ]]>#{pageSearch.startnum} and gprn<![CDATA[ <= ]]>#{pageSearch.endnum}
+	</select>
+	
+	<!-- 그룹피드댓글 더보기 비동기 -->
+	<select id="adminGroupDetailCmmt" parameterType="GroupPostVo" resultMap="groupcmmt">
+		select * from (select @rownum:=@rownum+1 as prorn,a.*,b.prophoto,b.proname from groupcomment a inner join profile b
+		 on a.pronum4=b.pronum,(select @rownum:=0) r where gpnum1=#{gpnum} order by gcdate desc) c where
+		  prorn<![CDATA[ >= ]]>#{pageSearch.startnum} and prorn<![CDATA[ <= ]]>#{pageSearch.endnum}+1
+	</select>
+	
+	<!-- 그룹피드 삭제처리 -->
+	<delete id="groupFeedDelete" parameterType="GroupPostVo">
+		delete from grouppost where gpnum=#{gpnum}
+	</delete>
+	
+	<!-- 그룹피드 댓글출력 -->
+	<select id="groupFeedCmmtInfoSelectAll" parameterType="GroupVo" resultMap="groupcmmt">
+		select a.*,b.prophoto,b.proname from groupcomment a inner join profile b on a.pronum4=b.pronum where grnum7=#{grnum} order by gcdate desc
+	</select>
+	
+	<!-- 그룹피드댓글 삭제처리 -->
+	<delete id="groupFeedCmmtDelete" parameterType="GroupCommentVo">
+		delete from groupcomment where gcnum=#{gcnum}
+	</delete>
+	
+	<!-- 그룹멤버리스트 출력 -->
+	<select id="adminGroupMemberList" parameterType="GroupVo" resultMap="joinuser">
+		select a.jgnum,a.grnum3,a.grname,b.* from joingroup a inner join profile b on a.pronum8=b.pronum where grnum3=#{grnum}
+	</select>
+	
+	<!-- 그룹관리 end -->
+	<!-- 유저관리 start -->
+	
+	<!-- 검색값,카테고리 포함 총회원수 출력 -->
+	<select id="adminUserCount" parameterType="PageSearchVo" resultType="int">
+		select count(*) from profile a inner join myadmin b on a.pronum=b.pronum7 where pronum!=1 and prokick!=2 and proname like concat('%',#{keyword},'%') and prostop like concat('%',#{search},'%')
+	</select>
+	
+	<!-- 회원관리정보 강퇴아닌사람만 출력 -->
+	<select id="adminUserSelectAll" parameterType="PageSearchVo" resultMap="profile2">
+		select * from (select @rnum:=@rnum+1 as prorn,d.* from (select c.prorn1,c.pronum,c.proname,c.proid,c.proidnum,c.projender,c.proaddr,c.projob,c.stoptotal,c.reporttotal,c.stoplv from (select @rownum:=@rownum+1 as prorn1,a.*,b.stoptotal,b.reporttotal,b.stoplv from profile a inner join myadmin b on a.pronum=b.pronum7,(select @rownum:=0) r where pronum!=1 and prokick!=2 and proname like concat('%',#{keyword},'%')) c order by prorn1 desc) d,(select @rnum:=0) r2 order by prorn desc) e where prorn1<![CDATA[ >= ]]>#{startnum} and prorn1<![CDATA[ <= ]]>#{endnum}
+	</select>
+	
+	<!-- 회원관리정보 강퇴아닌 사람중 정지중만 출력 -->
+	<select id="adminUserStopSelectAll" parameterType="PageSearchVo" resultMap="profile2">
+		select * from (select * from (select @rnum:=@rnum+1 as prorn,c.* from (select @rownum:=@rownum+1 as prorn1,pronum,proname,proid,proidnum,projender,proaddr,projob,b.stoptotal,b.reporttotal,b.stoplv from profile a inner join myadmin b on a.pronum=b.pronum7,(select @rownum:=0) r where pronum!=1 and prokick!=2 and stoplv<![CDATA[ >= ]]>1 and proname like concat('%',#{keyword},'%')) c order by prorn1 desc) d,(select @rnum:=0) r2 order by prorn desc) e where prorn1<![CDATA[ >= ]]>#{startnum} and prorn1<![CDATA[ <= ]]>#{endnum}
+	</select>
+	
+	<!-- 유저정지 처리 -->
+	<update id="userStop" parameterType="MyAdminVo">
+		update myadmin set stoptotal=stoptotal+1,stoplv=#{stoplv},stopresult=#{stopresult},prostop=2 where pronum7=#{pronum}
+	</update>
+	
+	<!-- 유저강퇴 처리 -->
+	<update id="userKick" parameterType="MyAdminVo">
+		update myadmin set prokick=2, stopresult=#{stopresult} where pronum7=#{pronum}
+	</update>
+	
+	<!-- 정지된유저 pronum,stoplv 가져오기 -->
+	<select id="stopUserList" resultMap="profile2">
+		select a.pronum,b.stoplv from profile a inner join myadmin b on a.pronum=b.pronum7 where pronum!=1 and prokick!=2 and prostop=2 and stoplv<![CDATA[ >= ]]>1
+	</select>
+	
+	<!-- 정지값이 0일때 정지해제 -->
+	<update id="updateStop_zero" parameterType="ProfileVo">
+		update myadmin set stoplv=0,prostop=1 where pronum7 in
+		<foreach item="item" index="index" collection="profileList" open="(" separator="," close=")">
+			#{item.pronum}
+		</foreach>
+	</update>
+	
+	<!-- 정지값이 1이상일때 정지값 업데이트 -->
+	<update id="updateStop_over" parameterType="ProfileVo">
+		update myadmin set stoplv=case pronum7
+		<foreach item="item" index="index" collection="profileList">
+			when #{item.pronum} then #{item.myAdmin.stoplv}
+		</foreach>
+		end where pronum7 in
+		<foreach item="item" index="index" collection="profileList" open="(" separator="," close=")">
+			#{item.pronum}
+		</foreach>
+	</update>
+	
+	<!-- 유저관리 end -->
+	<!-- 유저상세페이지 start -->
+	
+	<!-- 유저상세정보 출력 -->
+	<select id="userInfo" parameterType="ProfileVo" resultMap="profile3">
+		select distinct a.pronum,a.proname,a.prointro,a.proaddr,a.prophoto,b.stoptotal,b.reporttotal from profile a inner join myadmin b on a.pronum=b.pronum7 where pronum=#{pronum}
+	</select>
+	
+	<!-- 유저 피드갯수 출력 -->
+	<select id="userFeedCount" parameterType="ProfileVo" resultType="int">
+		select count(*) from mypost where pronum12=#{pronum}
+	</select>
+	
+	<!-- 유저 팔로잉갯수 출력 -->
+	<select id="userFollowingCount" parameterType="ProfileVo" resultType="int">
+		select count(*) from myfollowing where pronum11=#{pronum}
+	</select>
+	
+	<!-- 유저 팔로워갯수 출력 -->
+	<select id="userFollowerCount" parameterType="ProfileVo" resultType="int">
+		select count(*) from myfollower where pronum_sync=#{pronum}
+	</select>
+	
+	<!-- 유저 피드목록 출력 -->
+	<select id="userFeed" parameterType="ProfileVo" resultMap="post">
+		 select d.*,(select count(*) from mycomment where mpnum1=d.mpnum) as mptotal from 
+		(select @rownum:=@rownum+1 as mprn,a.*,c.prophoto,c.proname from mypost a inner join profile c
+		 on a.pronum12=c.pronum,(select @rownum:=0) r where pronum12=#{pronum} order by mpdate desc) d where mprn<![CDATA[ >= ]]>#{pageSearch.startnum} and mprn<![CDATA[ <= ]]>#{pageSearch.endnum}
+	</select>
+	
+	<!-- 유저 피드댓글목록 출력 -->
+	<select id="userCmmt" parameterType="ProfileVo" resultMap="cmmt">
+		select a.*,b.prophoto,b.proname from mycomment a inner join profile b on a.pronum13=b.pronum where pronum_sync=#{pronum} order by mcdate desc
+	</select>
+	
+	<!-- 유저피드 댓글 더보기출력 -->
+	<select id="adminUserDetailCmmt" parameterType="MyPostVo" resultMap="cmmt">
+		select * from (select @rownum:=@rownum+1 as prorn,a.*,b.prophoto,b.proname from mycomment
+		 a inner join profile b on a.pronum13=b.pronum,(select @rownum:=0) r where mpnum1=#{mpnum} order by mcdate desc)
+		  c where prorn<![CDATA[ >= ]]>#{pageSearch.startnum} and prorn<![CDATA[ <= ]]>#{pageSearch.endnum}+1
+	</select>
+	
+	<!-- 내피드삭제 or 피드쪽 내피드삭제 -->
+	<delete id="myFeedDelete" parameterType="MyPostVo">
+		delete from mypost where mpnum=#{mpnum}
+	</delete>
+	
+	<!-- 내피드댓글삭제 or 피드쪽 내피드댓글삭제 -->
+	<delete id="myFeedCmmtDelete" parameterType="MyCommentVo">
+		delete from mycomment where mcnum=#{mcnum}
+	</delete>
+	
+	<!-- 내팔로워리스트 출력 -->
+	<select id="adminUserfollowerList" parameterType="ProfileVo" resultMap="follower">
+		select a.mfrnum,b.* from myfollower a inner join profile b on a.pronum10=b.pronum where pronum_sync=#{pronum}
+	</select>
+	
+	<!-- 내팔로잉리스트 출력 -->
+	<select id="adminUserfollowList" parameterType="ProfileVo" resultMap="following">
+		select a.mfgnum,b.* from myfollowing a inner join profile b on a.pronum_sync=b.pronum where pronum11=#{pronum}
+	</select>
+	
+	<!-- 유저상세페이지 end -->
+	<!-- 캠핑장관리 start -->
+	
+	<!-- 캠핑장 토탈카운트 갯수 구하는곳 -->
+	<select id="adminCampCount" parameterType="PageSearchVo" resultType="int">
+		select count(*) from camp where canum!=1 and caname like concat('%',#{keyword},'%')
+	</select>
+	
+	<!-- 캠핑장관리정보 출력 -->
+	<select id="adminCampSelectAll" parameterType="PageSearchVo" resultMap="camp">
+		select d.carn,d.canum,d.mvnum1,caaddrsel,d.caname,d.cadate,d.proname from (select @rnum:=@rnum+1 as carn,c.* from (select @rownum:=@rownum+1 as carn2,canum,mvnum1,caaddrsel,caname,cadate,proname from camp a inner join myventure b on a.mvnum1=b.mvnum,(select @rownum:=0) r where caname like concat('%',#{keyword},'%') and canum!=1 order by caname asc) c,(select @rnum:=0) r2 order by carn2 desc) d where carn2<![CDATA[ >= ]]>#{startnum} and carn2<![CDATA[ <= ]]>#{endnum} order by carn desc
+	</select>
+	
+	<!-- 캠핑장 삭제 +@ -->
+	<delete id="campDelete" parameterType="CampVo">
+		delete from camp where canum in
+		<foreach item="item" index="index" collection="campList" open="(" separator="," close=")">
+      	 #{item.canum}
+ 		</foreach>
+	</delete>
+		
+	<!-- 해당캠핑장정보 출력 -->
+	<select id="campInfo" parameterType="CampVo" resultType="CampVo">
+		select a.* from camp a where canum=#{canum}
+	</select>
+	
+	<!-- 해당캠핑장 삭제처리 -->
+	<delete id="campDeleteOne" parameterType="CampVo">
+		delete from camp where canum=#{canum}
+	</delete>
+	
+	<!-- 해당캠핑장 공식그룹유무 체크 -->
+	<select id="groupVentureCheck" parameterType="CampVo" resultType="int">
+		select count(*) from group1 a inner join myventure b on a.pronum1=b.pronum2 inner join camp c on b.mvnum=c.mvnum1 where grventure=2 and canum=#{canum}
+	</select>
+	
+	<!-- 해당캠핑장 한줄평출력 -->
+	<select id="campReviewInfo" parameterType="CampVo" resultMap="campreview">
+		select a.*,b.prophoto from campreview a inner join profile b on a.pronum5=b.pronum where canum1=#{canum} order by crdate desc
+	</select>
+	
+	<!-- 해당캠핑장한줄평 삭제처리 -->
+	<delete id="campReviewDeleteOne" parameterType="CampReviewVo">
+		delete from campreview where crnum=#{crnum}
+	</delete>
+	
+	<!-- 캠핑장한줄평 갯수구하는곳 -->
+	<select id="campReviewCount" parameterType="CampVo" resultType="int">
+		select count(*) from campreview where canum1=#{canum}
+	</select>
+	
+	<!-- 공식그룹있으면 그룹정보출력 -->
+	<select id="ventureGroup" parameterType="CampVo" resultType="GroupVo">
+		select a.* from group1 a inner join myventure b on a.pronum1=b.pronum2 inner join camp c on b.mvnum=c.mvnum1 where grventure=2 and canum=#{canum}
+	</select>
+	
+	<!-- 캠핑장관리 end -->
+	<!-- 사업자관리 start -->
+	
+	<!-- 사업자관리정보 로우갯수(검색값-사업자번호) -->
+	<select id="adminVentureCount_ventureNumber" parameterType="PageSearchVo" resultType="int">
+		 select count(*) from myventure where mvnum!=1 and mvnumber like concat('%',#{keyword},'%')
+	</select>
+	
+	<!-- 사업자관리정보 로우갯수(검색값-캠핑장이름) -->
+	<select id="adminVentureCount_campName" parameterType="PageSearchVo" resultType="int">
+		 select count(*) from myventure where mvnum!=1 and mvname like concat('%',#{keyword},'%')
+	</select>
+	
+	<!-- 사업자관리정보 출력(검색값-사업자번호) -->
+	<select id="adminVentureSelectAll_mvnumber" parameterType="PageSearchVo" resultMap="myventure">
+		select c.mvrn,c.mvnum,c.mvnumber,c.mvname,c.mvaddr,c.proname,c.mvdate,c.canum,c.pronum2,c.mvphoto from (select @rnum:=@rnum+1 as mvrn,b.* from (select @rownum:=@rownum+1 as mvrn1,a.*,d.canum from myventure a left join camp d on a.mvnum=d.mvnum1,(select @rownum:=0) r where mvnum!=1 and mvnumber like concat('%',#{keyword},'%') order by mvnumber asc) b,(select @rnum:=0) r2 order by mvrn1 desc) c where mvrn1<![CDATA[ >= ]]>#{startnum} and mvrn1<![CDATA[ <= ]]>#{endnum} order by mvrn desc
+	</select>
+	
+	<!-- 사업자관리정보 출력(검색값-캠핑장이름) -->
+	<select id="adminVentureSelectAll_caname" parameterType="PageSearchVo" resultMap="myventure">
+		select c.mvrn,c.mvnum,c.mvnumber,c.mvname,c.mvaddr,c.proname,c.mvdate,c.canum,c.pronum2,c.mvphoto from (select @rnum:=@rnum+1 as mvrn,b.* from (select @rownum:=@rownum+1 as mvrn1,a.*,d.canum from myventure a left join camp d on a.mvnum=d.mvnum1,(select @rownum:=0) r where mvnum!=1 and mvname like concat('%',#{keyword},'%') order by mvname asc) b,(select @rnum:=0) r2 order by mvrn1 desc) c where mvrn1<![CDATA[ >= ]]>#{startnum} and mvrn1<![CDATA[ <= ]]>#{endnum} order by mvrn desc
+	</select>
+	
+	<!-- 사업자 삭제처리 +@ -->
+	<delete id="ventureDelete" parameterType="MyVentureVo">
+		delete from myventure where mvnum in
+		<foreach item="item" index="index" collection="ventureList" open="(" separator="," close=")">
+      	 #{item.mvnum}
+ 		</foreach>
+	</delete>
+	
+	<!-- 사업자삭제시 공식그룹있는사람 리턴 -->
+	<select id="ventureGroupCheck" parameterType="MyVentureVo" resultType="GroupVo">
+		select grnum,grventure from group1 where pronum1 in 
+		<foreach item="item" index="index" collection="ventureList" open="(" separator="," close=")">
+      	 #{item.pronum}
+ 		</foreach>
+		 and grventure=2 and grnum!=1
+	</select>
+	
+	<!-- 공식그룹인원 일반그룹으로 업데이트 -->
+	<update id="ventureGroupDelete" parameterType="GroupVo">
+		update group1 set grventure=1 where grnum in
+		<foreach item="item" index="index" collection="groupList" open="(" separator="," close=")">
+      		#{item.grnum}
+ 		</foreach>
+	</update>
+	
+	<!-- 해당 사업자사진출력 -->
+	<select id="AdminVentureImg" parameterType="MyVentureVo" resultType="MyVentureVo">
+		select mvphoto from myventure where mvnum=#{mvnum}
+	</select>
+	
+	<!-- 사업자관리 end -->
+	<!-- 사업자등록관리 start -->
+	
+	<!-- 사업자등록신청정보 로우갯수(사업자번호) -->
+	<select id="adminVentureRequestCount_ventureNumber" parameterType="PageSearchVo" resultType="int">
+		select count(*) from updatewait where grnum4=1 and mvnumber like concat('%',#{keyword},'%')
+	</select>
+	
+	<!-- 사업자등록신청정보 로우갯수(캠핑장명) -->
+	<select id="adminVentureRequestCount_campName" parameterType="PageSearchVo" resultType="int">
+		select count(*) from updatewait where grnum4=1 and mvname like concat('%',#{keyword},'%')
+	</select>
+	
+	<!-- 사업자등록신청정보 출력(검색값-사업자번호) -->
+	<select id="adminVentureRequestSelectAll_mvnumber" parameterType="PageSearchVo" resultMap="update">
+		select c.uwrn,c.pronum9,c.mvnumber,c.mvname,c.mvaddr,c.proname,c.uwdate,c.mvphoto,c.mvaddrsuv from (select @rnum:=@rnum+1 as uwrn,b.* from (select @rownum:=@rownum+1 as mvrn2,a.* from updatewait a,(select @rownum:=0) r where mvnumber like concat('%',#{keyword},'%') and grnum4=1 order by mvnumber asc) b,(select @rnum:=0) r2 order by mvrn2 desc) c where mvrn2<![CDATA[ >= ]]>#{startnum} and mvrn2<![CDATA[ <= ]]>#{endnum} order by uwrn desc
+	</select>
+	
+	<!-- 사업자등록신청정보 출력(검색값-캠핑장이름) -->
+	<select id="adminVentureRequestSelectAll_caname" parameterType="PageSearchVo" resultMap="update">
+		select c.uwrn,c.pronum9,c.mvnumber,c.mvname,c.mvaddr,c.proname,c.uwdate,c.mvphoto,c.mvaddrsuv from (select @rnum:=@rnum+1 as uwrn,b.* from (select @rownum:=@rownum+1 as mvrn2,a.* from updatewait a,(select @rownum:=0) r where mvname like concat('%',#{keyword},'%') and grnum4=1 order by mvname asc) b,(select @rnum:=0) r2 order by mvrn2 desc) c where mvrn2<![CDATA[ >= ]]>#{startnum} and mvrn2<![CDATA[ <= ]]>#{endnum} order by uwrn desc
+	</select>
+	
+	<!-- 사업자등록 승인처리 +@ -->
+	<insert id="ventureInsert" parameterType="UpdateWaitVo">
+		insert into myventure (mvnumber,mvaddr,pronum2,mvname,mvphoto,mvdate,mvaddrsuv,proname) values 
+		<foreach item="item" index="index" collection="updateList" separator=",">
+      	 (#{item.mvnumber},#{item.mvaddr},#{item.pronum},#{item.mvname},#{item.mvphoto},now(),#{item.mvaddrsuv},#{item.proname})
+ 		</foreach>
+	</insert>
+	
+	<!-- 승인대기테이블 정보삭제or사업자등록 거절처리 둘다 쓰임 -->
+	<delete id="updateDelete" parameterType="UpdateWaitVo">
+		delete from updatewait where (mvnumber,pronum9) in 
+		<foreach item="item" index="index" collection="updateList" open="(" separator="," close=")">
+      	 (#{item.mvnumber},#{item.pronum})
+ 		</foreach>
+	</delete>
+	
+	<!-- 사업자등록처리 시 그룹있는 유저의 그룹정보리턴 -->
+	<select id="groupCheck" parameterType="UpdateWaitVo" resultType="GroupVo">
+		select grnum from group1 where pronum1 in 
+		<foreach item="item" index="index" collection="updateList" open="(" separator="," close=")">
+      	 #{item.pronum}
+ 		</foreach>
+	</select>
+	
+	<!-- 사업자등록처리 시 그룹존재하면 공식그룹으로 업데이트 -->
+	<update id="groupVentureUpdate" parameterType="GroupVo">
+		update group1 set grventure=2 where grnum in
+		<foreach item="item" index="index" collection="groupList" open="(" separator="," close=")">
+      		#{item.grnum}
+ 		</foreach>
+	</update>
+	
+	<!-- 사업자등록관리 end -->
+	<!-- 신고관리 start -->
+	
+	<!-- 신고관리정보 로우갯수 -->
+	<select id="adminReportCount" parameterType="PageSearchVo" resultType="int">
+		select count(*) from reportlist a where rlstatus like concat('%',#{search},'%') and rlcategory like concat('%',#{category})
+	</select>
+	
+	<!-- 신고관리정보 출력 전체 -->
+	<select id="adminReportSelectAll" parameterType="PageSearchVo" resultType="ReportListVo">
+		select * from (select @rnum:=@rnum+1 as rlrn,b.* from (select @rownum:=@rownum+1 as rlrn2,a.* from reportlist a,(select @rownum:=0) r where rlstatus like concat('%',#{search},'%') and rlcategory like concat('%',#{category}) order by rldate desc) b,(select @rnum:=0) r2 order by rlrn2 desc) c where rlrn2<![CDATA[ >= ]]>#{startnum} and rlrn2<![CDATA[ <= ]]>#{endnum} order by rlrn desc
+	</select>
+	
+	<!-- 신고처리완료 업데이트 -->
+	<update id="adminReportUpdate" parameterType="ReportListVo">
+		update reportlist set rlstatus=2 where rlnum in
+		<foreach item="item" index="index" collection="reportList" open="(" separator="," close=")">
+      		#{item.rlnum}
+ 		</foreach>
+	</update>
+	
+	<!-- 신고상세페이지출력 -->
+	<select id="adminReportSelectOne" parameterType="ReportListVo" resultType="ReportListVo">
+		select * from reportlist where rlnum=#{rlnum}
+	</select>
+	
+	<!-- 신고관리 end -->
+	
+</mapper>

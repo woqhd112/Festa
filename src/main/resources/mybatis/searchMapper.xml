@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="search">
+
+	<!-- 내피드정보 출력 시에 참조되는 데이터 -->
+	<resultMap type="FeedVo" id="mypost">
+		<result column="mpnum" property="mpnum"/>
+		<result column="pronum12" property="pronum"/>
+		<result column="mpauthor" property="mpauthor"/>
+		<result column="mpcontent" property="mpcontent"/>
+		<result column="mpdate" property="date"/>
+		<result column="mpgood" property="good"/>
+		<result column="mpphoto" property="mpphoto"/>
+		<result column="mptotal" property="mptotal"/>
+		<result column="httitle1" property="httitle1"/>
+		<result column="httitle2" property="httitle2"/>
+		<result column="httitle3" property="httitle3"/>
+		<association property="profile" resultMap="profile"/>
+	</resultMap>
+	<!-- 그룹피드정보 출력 시에 참조되는 데이터 -->
+	<resultMap type="FeedVo" id="grouppost">
+		<result column="gpnum" property="gpnum"/>
+		<result column="gpauthor" property="gpauthor"/>
+		<result column="gpcontent" property="gpcontent"/>
+		<result column="gpdate" property="date"/>
+		<result column="gpgood" property="good"/>
+		<result column="grnum1" property="grnum"/>
+		<result column="pronum3" property="pronum"/>
+		<result column="gpphoto" property="gpphoto"/>
+		<result column="gptotal" property="gptotal"/>
+		<result column="httitle1" property="httitle1"/>
+		<result column="httitle2" property="httitle2"/>
+		<result column="httitle3" property="httitle3"/>
+		<association property="group" resultMap="group"/>
+		<association property="profile" resultMap="profile"/>
+	</resultMap>
+	<resultMap type="GroupVo" id="group">
+		<result column="grname" property="grname"/>
+	</resultMap>
+	
+	<!-- 개인피드댓글 조인 시에 참조되는 데이터 -->
+	<resultMap type="MyCommentVo" id="cmmt">
+		<result column="mcnum" property="mcnum"/>
+		<result column="mccontent" property="mccontent"/>
+		<result column="mcauthor" property="mcauthor"/>
+		<result column="mcdate" property="mcdate"/>
+		<result column="mpnum1" property="mpnum"/>
+		<result column="pronum13" property="pronum"/>
+		<result column="pronum_sync" property="pronum_sync"/>
+		<association property="profile" resultMap="profile"/>
+	</resultMap>
+	
+	<!-- 그룹피드댓글 조인 시에 참조되는 데이터 -->
+	<resultMap type="GroupCommentVo" id="groupcmmt">
+		<result column="gcnum" property="gcnum"/>
+		<result column="gccontent" property="gccontent"/>
+		<result column="gcauthor" property="gcauthor"/>
+		<result column="gcdate" property="gcdate"/>
+		<result column="gpnum1" property="gpnum"/>
+		<result column="pronum4" property="pronum"/>
+		<result column="grnum7" property="grnum"/>
+		<association property="profile" resultMap="profile"/>
+	</resultMap>
+	<resultMap type="ProfileVo" id="profile">
+		<result column="proid" property="proid"/>
+		<result column="prophoto" property="prophoto"/>
+		<result column="proname" property="proname"/>
+	</resultMap>
+	
+	<!-- 내 좋아요목록 -->
+	<resultMap type="MyGoodVo" id="good">
+		<result column="pronum6" property="pronum"/>
+		<result column="canum3" property="canum"/>
+		<result column="gpnum3" property="gpnum"/>
+		<result column="mpnum2" property="mpnum"/>
+	</resultMap>
+	
+
+	<!-- 검색페이지 출력 start -->
+	
+	<!-- 검색 - 캠핑장정보 출력 -->
+	<select id="searchCampSelectAll" parameterType="PageSearchVo" resultType="CampVo">
+		select distinct * from ((select * from (select * from camp a where canum!=1 and caname like concat('%',#{keyword},'%')) c order by c.cagood desc) union all (select * from (select * from camp a where canum!=1 and (httitle1 like concat('%',#{keyword},'%') or httitle2 like concat('%',#{keyword},'%') or httitle3 like concat('%',#{keyword},'%'))) c order by c.cagood desc)) d
+	</select>
+	
+	<!-- 검색 - 그룹정보 출력 -->
+	<select id="searchGroupSelectAll" parameterType="PageSearchVo" resultType="GroupVo">
+		 select distinct c.grnum,c.grphoto,c.grname,c.grintro,c.graddr,c.grventure from ((select * from group1 where grnum!=1 and grname like concat('%',#{keyword},'%') order by grtotal desc) union all (select * from group1 where grnum!=1 and graddr like concat('%',#{keyword},'%') order by grtotal desc)) c
+	</select>
+	
+	<!-- 검색그룹정보의 토탈카운트갯수 -->
+	<select id="searchGroupCount" parameterType="PageSearchVo" resultType="int">
+		 select count(*) from ((select * from group1 where grnum!=1 and grname like concat('%',#{keyword},'%') order by grtotal desc) union (select * from group1 where grnum!=1 and graddr like concat('%',#{keyword},'%') order by grtotal desc)) c
+	</select>
+	
+	<!-- 검색 - 내피드정보 출력 -->
+	<select id="searchMyFeedSelectAll" parameterType="PageSearchVo" resultMap="mypost">
+		select * from (select distinct @rownum:=@rownum+1 as mprn,e.* from ((select d.*,(select count(*) from mycomment where mpnum1=d.mpnum) as mptotal from (select a.*,c.proid,c.prophoto,c.proname from mypost a inner join profile c on a.pronum12=c.pronum where mpnum!=1 and (httitle1 like concat('%',#{keyword},'%') or httitle2 like concat('%',#{keyword},'%') or httitle3 like concat('',#{keyword},'%'))) d order by mpgood desc) union all (select *,(select count(*) from mycomment where mpnum1=d.mpnum) as mptotal from (select a.*,c.proid,c.prophoto,c.proname from mypost a inner join profile c on a.pronum12=c.pronum where mpnum!=1 and mpcontent like concat('%',#{keyword},'%')) d order by mpgood desc)) e,(select @rownum:=0) r) f where mprn<![CDATA[ >= ]]>#{startnum} and mprn<![CDATA[ <= ]]>#{endnum}
+	</select>
+	
+	<!-- 검색 - 그룹피드정보 출력 -->
+	<select id="searchGroupFeedSelectAll" parameterType="PageSearchVo" resultMap="grouppost">
+		select * from (select distinct @rownum:=@rownum+1 as gprn,e.* from ((select *,(select count(*) from groupcomment where gpnum1=d.gpnum) as gptotal from (select a.*,c.grname,f.proid,f.prophoto,f.proname from grouppost a inner join group1 c on a.grnum1=c.grnum inner join profile f on a.pronum3=f.pronum where gpnum!=1 and (a.httitle1 like concat('%',#{keyword},'%') or a.httitle2 like concat('%',#{keyword},'%') or a.httitle3 like concat('%',#{keyword},'%'))) d order by gpgood desc) union all (select *,(select count(*) from groupcomment where gpnum1=d.gpnum) as gptotal from (select a.*,c.grname,f.proid,f.prophoto,f.proname from grouppost a inner join group1 c on a.grnum1=c.grnum inner join profile f on a.pronum3=f.pronum where gpnum!=1 and gpcontent like concat('%',#{keyword},'%')) d order by gpgood desc)) e,(select @rownum:=0)r) f where gprn<![CDATA[ >= ]]>#{startnum} and gprn<![CDATA[ <= ]]>#{endnum}
+	</select>
+	
+	<!-- 검색페이지 출력 end -->
+	<!-- 피드상세페이지 출력 start -->
+	
+	<!-- 개인피드 상세페이지출력 -->
+	<select id="myFeedDetail" parameterType="MyPostVo" resultMap="mypost">
+		select a.*,c.proid,c.prophoto,c.proname,(select count(*) from mycomment where mpnum1=a.mpnum) as mptotal from mypost a inner join profile c on a.pronum12=c.pronum where mpnum=#{mpnum}
+	</select>
+	
+	<!-- 그룹피드 상세페이지출력 -->
+	<select id="groupFeedDetail" parameterType="GroupPostVo" resultMap="grouppost">
+		select a.*,c.grname,d.proid,d.prophoto,d.proname,(select count(*) from groupcomment where gpnum1=a.gpnum) as gptotal from grouppost a inner join group1 c on a.grnum1=c.grnum inner join profile d on a.pronum3=d.pronum where gpnum=#{gpnum}
+	</select>
+	
+	<!-- 개인피드 댓글출력 -->
+	<select id="myFeedCmmtSelectAll" parameterType="FeedVo" resultMap="cmmt">
+		select a.*,b.prophoto,b.proname from mycomment a inner join profile b on a.pronum13=b.pronum where mpnum1=#{mpnum} order by mcdate desc
+	</select>
+	
+	<!-- 그룹피드 댓글출력 -->
+	<select id="groupFeedCmmtSelectAll" parameterType="FeedVo" resultMap="groupcmmt">
+		select a.*,b.prophoto,b.proname from groupcomment a inner join profile b on a.pronum4=b.pronum where gpnum1=#{gpnum} order by gcdate desc
+	</select>
+	
+	<!-- 그룹피드 댓글더보기 -->
+	<select id="searchGroupCmmt" parameterType="GroupPostVo" resultMap="groupcmmt">
+		select * from (select @rownum:=@rownum+1 as prorn,a.*,b.prophoto,b.proname from groupcomment a inner join profile b
+		 on a.pronum4=b.pronum,(select @rownum:=0) r where gpnum1=#{gpnum} order by gcdate desc) c where
+		  prorn<![CDATA[ >= ]]>#{pageSearch.startnum} and prorn<![CDATA[ <= ]]>#{pageSearch.endnum}+1
+	</select>
+	
+	<!-- 개인피드 댓글더보기 -->
+	<select id="searchMyCmmt" parameterType="MyPostVo" resultMap="cmmt">
+		select * from (select @rownum:=@rownum+1 as prorn,a.*,b.prophoto,b.proname from mycomment
+		 a inner join profile b on a.pronum13=b.pronum,(select @rownum:=0) r where mpnum1=#{mpnum} order by mcdate desc)
+		  c where prorn<![CDATA[ >= ]]>#{pageSearch.startnum} and prorn<![CDATA[ <= ]]>#{pageSearch.endnum}+1
+	</select>
+	
+	<!-- 피드상세페이지 출력 end -->
+	<!-- 피드,댓글 등록,수정,삭제 start -->
+	
+	<!-- 개인피드 수정 -->
+	<update id="myFeedUpdateOne" parameterType="MyPostVo">
+		update mypost set mpcontent=#{mpcontent},mpphoto=#{mpphoto},httitle1=#{httitle1},httitle2=#{httitle2},httitle3=#{httitle3} where mpnum=#{mpnum}
+	</update>
+	
+	<!-- 그룹피드 수정 -->
+	<update id="groupFeedUpdateOne" parameterType="GroupPostVo">
+		update grouppost set gpcontent=#{gpcontent},gpphoto=#{gpphoto},httitle1=#{httitle1},httitle2=#{httitle2},httitle3=#{httitle3} where gpnum=#{gpnum}
+	</update>
+	<!-- 개인피드 삭제 -->
+	<delete id="myFeedDeleteOne" parameterType="MyPostVo">
+		delete from mypost where mpnum=#{mpnum}
+	</delete>
+	
+	<!-- 그룹피드 삭제 -->
+	<delete id="groupFeedDeleteOne" parameterType="GroupPostVo">
+		delete from grouppost where gpnum=#{gpnum}
+	</delete>
+	
+	<!-- 개인피드댓글 등록 -->
+	<insert id="myFeedCmmtInsertOne" parameterType="MyCommentVo">
+		insert into mycomment (mccontent,mcauthor,mcdate,mpnum1,pronum13,pronum_sync) values (#{mccontent},#{mcauthor},now(),#{mpnum},#{pronum},#{pronum_sync})
+	</insert>
+	
+	<!-- 그룹피드댓글 등록 -->
+	<insert id="groupFeedCmmtInsertOne" parameterType="GroupCommentVo">
+		insert into groupcomment (gccontent,gcauthor,gcdate,gpnum1,pronum4,grnum7) values (#{gccontent},#{gcauthor},now(),#{gpnum},#{pronum},#{grnum})
+	</insert>
+	
+	<!-- 개인피드댓글 삭제 -->
+	<delete id="myFeedCmmtDeleteOne" parameterType="MyCommentVo">
+		delete from mycomment where mcnum=#{mcnum}
+	</delete>
+	
+	<!-- 그룹피드댓글 삭제 -->
+	<delete id="groupFeedCmmtDeleteOne" parameterType="GroupCommentVo">
+		delete from groupcomment where gcnum=#{gcnum}
+	</delete>
+	
+	<!-- 피드,댓글 등록,수정,삭제 end -->
+	<!-- 피드 좋아요등록,해제 start -->
+	
+	<!-- 개인피드 좋아요등록 -->
+	<insert id="myFeedLikeInsertOne" parameterType="MyGoodVo">
+		insert into mygood values (#{pronum},1,1,#{mpnum})
+	</insert>
+	
+	<!-- 그룹피드 좋아요등록 -->
+	<insert id="groupFeedLikeInsertOne" parameterType="MyGoodVo">
+		insert into mygood values (#{pronum},1,#{gpnum},1);
+	</insert>
+	
+	<!-- 개인피드 좋아요해제 -->
+	<delete id="myFeedLikeDeleteOne" parameterType="MyGoodVo">
+		delete from mygood where pronum6=#{pronum} and mpnum2=#{mpnum}
+	</delete>
+	
+	<!-- 그룹피드 좋아요해제 -->
+	<delete id="groupFeedLikeDeleteOne" parameterType="MyGoodVo">
+		delete from mygood where pronum6=#{pronum} and gpnum3=#{gpnum}
+	</delete>
+	
+	<!-- 개인피드 좋아요등록시 개인피드좋아요 갯수+1 -->
+	<update id="myFeedLikePlusOne" parameterType="MyGoodVo">
+		update mypost set mpgood=mpgood+1 where mpnum=#{mpnum}
+	</update>
+
+	<!-- 그룹피드 좋아요등록시 그룹피드좋아요 갯수+1 -->
+	<update id="groupFeedLikePlusOne" parameterType="MyGoodVo">
+		update grouppost set gpgood=gpgood+1 where gpnum=#{gpnum}
+	</update>
+	
+	<!-- 개인피드 좋아요해제시 개인피드좋아요 갯수-1 -->
+	<update id="myFeedLikeMinusOne" parameterType="MyGoodVo">
+		update mypost set mpgood=mpgood-1 where mpnum=#{mpnum}
+	</update>
+	
+	<!-- 그룹피드 좋아요해제시 그룹피드좋아요 갯수-1 -->
+	<update id="groupFeedLikeMinusOne" parameterType="MyGoodVo">
+		update grouppost set gpgood=gpgood-1 where gpnum=#{gpnum}
+	</update>
+	
+	<!-- 내 좋아요목록 갱신 -->
+	<select id="myGoodRenewal" parameterType="MyGoodVo" resultMap="good">
+		select * from mygood where pronum6=#{pronum}
+	</select>
+	
+	<!-- 피드 좋아요등록,해제 end -->
+	<!-- 피드 신고등록 start -->
+	
+	<!-- 개인피드 신고등록 -->
+	<insert id="myFeedReportInsertOne" parameterType="ReportListVo">
+		insert into reportlist (rlcategory,rlreport,rlreporter,reporterid,rltarget,
+		targetid,rldate,pronum_sync,pronum14,grnum5,gpnum4,canum4,mpnum3,gnnum1,rlstatus,rlphoto)
+		 values ('내피드',#{rlreport},#{rlreporter},#{reporterid},#{rltarget},#{targetid},now(),#{pronum_sync},#{pronum},1,1,1,#{mpnum},1,1,#{rlphoto})
+	</insert>
+	
+	<!-- 그룹피드 신고등록 -->
+	<insert id="groupFeedReportInsertOne" parameterType="ReportListVo">
+		insert into reportlist (rlcategory,rlreport,rlreporter,reporterid,rltarget,
+		targetid,rldate,pronum_sync,pronum14,grnum5,gpnum4,canum4,mpnum3,gnnum1,rlstatus,rlphoto)
+		 values ('그룹피드',#{rlreport},#{rlreporter},#{reporterid},#{rltarget},#{targetid},now(),#{pronum_sync},#{pronum},1,#{gpnum},1,1,1,1,#{rlphoto})
+	</insert>
+	
+	<!-- 신고당한사람 신고당한횟수 +1 -->
+	<update id="feedUserReportCountUpdate" parameterType="ReportListVo">
+		update myadmin set reporttotal=reporttotal+1 where pronum7=#{pronum_sync}
+	</update>
+	
+	<!-- 피드 신고등록 end -->
+	
+</mapper>

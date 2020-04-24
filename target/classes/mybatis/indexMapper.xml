@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="index">
+
+	<!-- 메인화면 가입인원많은순 그룹리스트 -->
+	<select id="totalGroupList" resultType="GroupVo">
+		select * from (SELECT @ROWNUM:=@ROWNUM+1 as grrn, A.* FROM group1 A, (SELECT @ROWNUM:=0) R where grnum!=1 order by grtotal desc) c where grrn<![CDATA[ >= ]]>1 and grrn<![CDATA[ <= ]]>8
+	</select>
+	
+	<!-- 메인화면 선호지역기반 그룹리스트 -->
+	<select id="addrGroupList" parameterType="ProfileVo" resultType="GroupVo">
+		select * from ((select @ROWNUM:=@ROWNUM+1 as grrn,a.* from group1 a,(select @rownum:=0) r where grnum!=1 and graddr like concat('%',#{proaddr},'%') and grnum!=1 and grnum not in (select grnum3 from joingroup where pronum8=#{pronum}) order by grtotal desc) union all (SELECT @ROWNUM:=@ROWNUM+1 as grrn, A.* FROM group1 A, (SELECT @ROWNUM:=0) R where grnum!=1 order by grtotal desc)) f where grrn<![CDATA[ >= ]]>1 and grrn<![CDATA[ <= ]]>8
+	</select>
+	
+	<!-- 메인화면 좋아요많은순 캠핑장리스트 -->
+	<select id="campList" resultType="CampVo">									<!-- 비교연산자 < 는 마크업랭기지라 에러발생하므로 아래코드로 대체 -->
+		select * from (select @rownum:=@rownum+1 as carn,camp.* from camp,(SELECT @ROWNUM:=0) R where canum!=1 order by cagood desc) c where carn<![CDATA[ >= ]]>1 and carn<![CDATA[ <= ]]>8
+	</select>
+</mapper>
